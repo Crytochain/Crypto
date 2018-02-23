@@ -1,16 +1,15 @@
 # MOAC JavaScript API version 0.1.0.
-To migrate to this version, please follow the guide:
+
 
 var Chain3 = require('chain3');
 var chain3 = new Chain3();
 
 This is the MOAC compatible [JavaScript API]
-which implements the [Generic JSON RPC](https://github.com/moac/wiki/wiki/JSON-RPC) spec. It's available on npm as a node module, for bower and component as an embeddable js and as a meteor.js package.
+which implements the [Generic JSON RPC] spec as described in the Chain3.md. It's available on npm as a node module, for bower and component as an embeddable js and as a meteor.js package.
 
 
 Some of the methods require running a local MOAC node to use this library.
 
-[Documentation](https://github.com/moac/wiki/wiki/JavaScript-API)
 
 ## Installation
 
@@ -39,7 +38,7 @@ component install moac/chain3.js
 Use the `chain3` object directly from global namespace:
 
 ```js
-console.log(chain3); // {mc: .., shh: ...} // it's here!
+console.log(chain3); // {mc: .., db: ..., net: ...} // it's here!
 ```
 
 Set a provider (HttpProvider)
