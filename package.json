@@ -1,0 +1,79 @@
+{
+  "name": "chain3",
+  "namespace": "MOAC",
+  "version": "0.1.0",
+  "description": "MOAC JavaScript API, middleware to talk to a MOAC node over RPC",
+  "main": "./index.js",
+  "directories": {
+    "lib": "./lib",
+    "test": "test",
+    "example" : "examples"
+  },
+  "dependencies": {
+    "bignumber.js": "git+https://github.com/frozeman/bignumber.js-nolookahead.git",
+    "crypto-js": "^3.1.4",
+    "utf8": "^2.1.1",
+    "xhr2": "*",
+    "base-x": "*",
+    "xmlhttprequest": "*"
+  },
+  "browser": {
+    "xmlhttprequest": "./lib/utils/browser-xhr.js"
+  },
+  "devDependencies": {
+    "bignumber.js": "^2.0.7",
+    "bower": ">=1.4.1",
+    "browserify": ">=10.0",
+    "browserify-cryptojs": "^0.3.1",
+    "chai": "^3.0.0",
+    "coveralls": "^2.11.2",
+    "del": ">=2.0.2",
+    "exorcist": "^0.4.0",
+    "gulp": "^3.9.1",
+    "gulp-jshint": ">=1.5.0",
+    "gulp-rename": ">=1.2.0",
+    "gulp-replace": "^0.5.3",
+    "gulp-streamify": "0.0.5",
+    "gulp-uglify": ">=1.2.0",
+    "istanbul": "^0.4.4",
+    "jshint": ">=2.5.0",
+    "jszip": "^2.5.0",
+    "keccak": "^1.0.2",
+    "localstorejs": "^0.1.9",
+    "mocha": ">=2.3.3",
+    "node-safe-filesaver": "^0.1.0",
+    "rlp": "^2.0.0",
+    "sandboxed-module": "^2.0.2",
+    "secp256k1": "^3.0.1",
+    "underscore": "^1.8.3",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "scripts": {
+    "build": "gulp",
+    "watch": "gulp watch",
+    "test": "mocha",
+    "test-coveralls": "istanbul cover _mocha -- -R spec && cat coverage/lcov.info | coveralls --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MOACChain/chain3/releases"
+  },
+  "homepage": "https://github.com/MOACChain/chain3",
+  "bugs": {
+    "url": "https://github.com/MOACChain/chain3/issues"
+  },
+  "keywords": [
+    "MOAC",
+    "javascript",
+    "API"
+  ],
+  "author": "moac.io",
+  "authors": [
+    {
+      "name": "MOAC lab",
+      "email": "support@moac.io",
+      "url": "https://github.com/MOACChain/chain3"
+    }
+  ],
+  "license": "LGPL-3.0"
+}
