@@ -1,13 +1,13 @@
 {
   "name": "chain3",
   "namespace": "MOAC",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "MOAC JavaScript API, middleware to talk to a MOAC node over RPC",
   "main": "./index.js",
   "directories": {
     "lib": "./lib",
     "test": "test",
-    "example" : "examples"
+    "example": "examples"
   },
   "dependencies": {
     "bignumber.js": "git+https://github.com/frozeman/bignumber.js-nolookahead.git",
