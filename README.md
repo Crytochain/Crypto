@@ -2,10 +2,10 @@
 
 
 var Chain3 = require('chain3');
+
 var chain3 = new Chain3();
 
-This is the MOAC compatible [JavaScript API]
-which implements the [Generic JSON RPC] spec as described in the Chain3.md. It's available on npm as a node module, for bower and component as an embeddable js and as a meteor.js package.
+This is the MOAC compatible JavaScript API which implements the Generic JSON RPC spec as described in the Chain3.md. It's available on npm as a node module, for bower and component as an embeddable js and as a meteor.js package.
 
 
 Some of the methods require running a local MOAC node to use this library.
