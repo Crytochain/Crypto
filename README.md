@@ -64,7 +64,7 @@ There you go, now you can use it:
 var coinbase = chain3.mc.coinbase;
 var balance = chain3.mc.getBalance(coinbase);
 ```
-More examples are under the examples directory
+More examples are under the example directory
 
 ## Contribute!
 
