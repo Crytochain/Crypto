@@ -1,6 +1,5 @@
 var chai = require('chai');
 var assert = chai.assert; 
-//var chain3 = require('../../index');
 
 var FakeHttpProvider = require('./FakeHttpProvider');
 
@@ -13,8 +12,11 @@ var methodExists = function (object, method) {
 
 var propertyExists = function (object, property) {
     it('should have property ' + property + ' implemented', function() {
-        // set dummy providor, to prevent error
-        //chain3.setProvider(new FakeHttpProvider());
+        // set dummy providor, to prevent error, but 
+        // chain3.setProvider(new FakeHttpProvider()); 
+        console.log(typeof object[property]);//debug line
+        // for (var p in object)
+          // console.log('Pro:', p);//chain3[p]);//debug line
         assert.notEqual('undefined', typeof object[property], 'property ' + property + ' is not implemented');
     });
 };

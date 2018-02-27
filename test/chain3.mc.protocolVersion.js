@@ -23,7 +23,7 @@ describe('mc.protocolVersion', function () {
                 provider.injectValidation(function (payload) {
                     console.log("Get payload:", payload);
 
-                    assert.equal(payload.jsonrpc, '1.0');
+                    assert.equal(payload.jsonrpc, '2.0');
                     console.log("pass 1");
 
                     assert.equal(payload.method, test.call);

@@ -22,7 +22,7 @@ describe('chain3.mc', function () {
                 chain3.setProvider(provider);
                 provider.injectResult(test.result);
                 provider.injectValidation(function (payload) {
-                    assert.equal(payload.jsonrpc, '1.0');
+                    assert.equal(payload.jsonrpc, '2.0');
                     assert.equal(payload.method, test.call);
                     assert.deepEqual(payload.params, []);
                 });
@@ -41,7 +41,7 @@ describe('chain3.mc', function () {
                 chain3.setProvider(provider);
                 provider.injectResult(test.result);
                 provider.injectValidation(function (payload) {
-                    assert.equal(payload.jsonrpc, '1.0');
+                    assert.equal(payload.jsonrpc, '2.0');
                     assert.equal(payload.method, test.call);
                     assert.deepEqual(payload.params, []);
                 });

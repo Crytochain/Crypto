@@ -17,7 +17,7 @@ describe('mc', function () {
                 highestBlock: '0xb'
             });
             provider.injectValidation(function(payload) {
-                assert.equal(payload.jsonrpc, '1.0', 'failed');
+                assert.equal(payload.jsonrpc, '2.0', 'failed');
                 assert.equal(payload.method, 'mc_syncing');
             });
 
@@ -38,7 +38,7 @@ describe('mc', function () {
             var chain3 = new Chain3(provider);
             provider.injectResult(false);
             provider.injectValidation(function(payload) {
-                assert.equal(payload.jsonrpc, '1.0', 'failed');
+                assert.equal(payload.jsonrpc, '2.0', 'failed');
                 assert.equal(payload.method, 'mc_syncing');
             });
 

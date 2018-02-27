@@ -55,7 +55,7 @@ provider.injectBatchResults(test.result);
                     //console.log("injectValidation payload:", payload[0])
                     
                     //console.log("Get payload:"+payload[0].jsonrpc, payload[0].method, payload[0].params, test.call);
-                    assert.equal(payload[0].jsonrpc, '1.0', 'failed');
+                    assert.equal(payload[0].jsonrpc, '2.0', 'failed');
                     assert.equal(payload[0].method, test.call);
                     assert.deepEqual(payload[0].params, test.formattedArgs);
                });

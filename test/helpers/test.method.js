@@ -19,7 +19,7 @@ var runTests = function (obj, method, tests) {
                     var chain3 = new Chain3(provider);
                     provider.injectResult(test.result);
                     provider.injectValidation(function (payload) {
-                        assert.equal(payload.jsonrpc, '1.0');
+                        assert.equal(payload.jsonrpc, '2.0');
                         assert.equal(payload.method, test.call);
                         assert.deepEqual(payload.params, test.formattedArgs);
                     });
@@ -48,7 +48,7 @@ var runTests = function (obj, method, tests) {
                     var chain3 = new Chain3(provider);
                     provider.injectResult(test.result);
                     provider.injectValidation(function (payload) {
-                        assert.equal(payload.jsonrpc, '1.0');
+                        assert.equal(payload.jsonrpc, '2.0');
                         assert.equal(payload.method, test.call);
                         assert.deepEqual(payload.params, test.formattedArgs);
                     });

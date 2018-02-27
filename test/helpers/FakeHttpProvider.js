@@ -6,7 +6,7 @@ countId = 1;
 
 var getResponseStub = function () {
     return {
-        jsonrpc: '1.0',
+        jsonrpc: '2.0',
         id: countId++,
         result: null
     };
@@ -14,7 +14,7 @@ var getResponseStub = function () {
 
 var getErrorStub = function () {
     return {
-        jsonrpc: '1.0',
+        jsonrpc: '2.0',
         countId: countId++,
         error: {
             code: 1234,
