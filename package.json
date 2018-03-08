@@ -42,6 +42,7 @@
     "localstorejs": "^0.1.9",
     "mocha": ">=2.3.3",
     "node-safe-filesaver": "^0.1.0",
+    "hash.js": "^1.0.0",
     "rlp": "^2.0.0",
     "sandboxed-module": "^2.0.2",
     "secp256k1": "^3.0.1",
