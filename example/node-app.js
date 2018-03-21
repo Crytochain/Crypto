@@ -8,8 +8,9 @@
 var Chain3 = require('../index.js');
 var chain3 = new Chain3();
 
-//chain3.setProvider(new chain3.providers.HttpProvider('http://localhost:8545'));
-chain3.setProvider(new chain3.providers.HttpProvider('http://35.190.170.132:8545'));
+chain3.setProvider(new chain3.providers.HttpProvider('http://localhost:8545'));
+//A test node
+// chain3.setProvider(new chain3.providers.HttpProvider('http://35.190.170.132:8545'));
 //test machine mc01
 //chain3.setProvider(new chain3.providers.HttpProvider('http://35.227.47.158:8545'));
 

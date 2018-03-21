@@ -58,8 +58,10 @@ FakeHttpProvider.prototype.send = function (payload) {
 //     },1);
 // };
 FakeHttpProvider.prototype.sendAsync = function (payload, callback) {
+    
     assert.equal(utils.isArray(payload) || utils.isObject(payload), true);
     assert.equal(utils.isFunction(callback), true);
+
     if (this.validation) {
         // imitate plain json object
         this.validation(JSON.parse(JSON.stringify(payload)), callback);
