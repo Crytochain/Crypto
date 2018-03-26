@@ -1,6 +1,6 @@
 var chai = require('chai');
-var BigNumber = require('bignumber.js');
-var utils = require('../lib/utils/utils.js');
+var utils = require('../packages/web3-utils');
+
 var assert = chai.assert;
 
 var tests = [
@@ -11,7 +11,7 @@ var tests = [
 ];
 
 describe('lib/utils/utils', function () {
-    describe('fromAscii', function () {
+    describe('asciiToHex', function () {
         tests.forEach(function (test) {
             it('should turn ' + test.value + ' to ' + test.expected, function () {
                 assert.strictEqual(utils.fromAscii(test.value), test.expected);

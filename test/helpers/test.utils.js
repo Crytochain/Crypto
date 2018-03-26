@@ -1,22 +1,20 @@
 var chai = require('chai');
-var assert = chai.assert; 
+var assert = chai.assert;
+//var web3 = require('../../index');
 
-var FakeHttpProvider = require('./FakeHttpProvider');
+var FakeHttpProvider = require('./FakeIpcProvider');
 
 var methodExists = function (object, method) {
     it('should have method ' + method + ' implemented', function() {
-        //chain3.setProvider(null);
+        //web3.setProvider(null);
         assert.equal('function', typeof object[method], 'method ' + method + ' is not implemented');
     });
 };
 
 var propertyExists = function (object, property) {
     it('should have property ' + property + ' implemented', function() {
-        // set dummy providor, to prevent error, but 
-        // chain3.setProvider(new FakeHttpProvider()); 
-        console.log(typeof object[property]);//debug line
-        // for (var p in object)
-          // console.log('Pro:', p);//chain3[p]);//debug line
+        // set dummy providor, to prevent error
+        //web3.setProvider(new FakeHttpProvider());
         assert.notEqual('undefined', typeof object[property], 'property ' + property + ' is not implemented');
     });
 };

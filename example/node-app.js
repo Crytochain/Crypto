@@ -13,12 +13,20 @@ chain3.setProvider(new chain3.providers.HttpProvider('http://localhost:8545'));
 // chain3.setProvider(new chain3.providers.HttpProvider('http://35.190.170.132:8545'));
 //test machine mc01
 //chain3.setProvider(new chain3.providers.HttpProvider('http://35.227.47.158:8545'));
+//md03
+// chain3.setProvider(new chain3.providers.HttpProvider('http://35.192.52.229:8545'));
+
 
 if (!chain3.isConnected()){
     console.log("Chain3 RPC is not connected!");
     return;
 }
 
+// //Create a new account
+// var account = new Web3EthAccounts('ws://localhost:8546');
+// account.create();
+
+// return;
 
 console.log("Check account balance\n=========================================\n");
 var coinbase = chain3.mc.accounts[0];//coinbase;
