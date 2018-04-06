@@ -18,7 +18,7 @@ var assert = chai.assert;
 // var Chain3 = require('chain3');
 var Chain3 = require('../index.js');
 var chain3 = new Chain3();
-
+var transaction = require('./transaction.js');
 
 //test accounts
 var taccts = [{
@@ -49,15 +49,16 @@ function sendTx(src, des, value){
       to: des.addr, 
       value: chain3.intToHex(chain3.toSha(value, 'mc')), 
       data: '0x00',
-      shardingFlag: 1
+      shardingFlag: 0
     }
 
     // console.log(rawTx);
-    var moactx = new chain3.transaction(rawTx);
+    var moactx = new transaction(rawTx);
 
     //Should set the right network
     // console.log(chain3.version.network);
-    moactx.setChainId(chain3.version.network);
+    //for devlop network
+    moactx.setChainId(2);//chain3.version.network);
 
     //Get the account TX list to set the raw TX command nonce value
     //Requires the private key
@@ -66,7 +67,7 @@ function sendTx(src, des, value){
 
     var cmd2 = '0x' + moactx.serialize().toString('hex');
 
-    // console.log("Send cmd:", cmd2);
+    console.log("Send cmd:", cmd2);
     // console.log("len", cmd2.length);
 
     // Functions to check the signature
@@ -109,12 +110,12 @@ chain3.setProvider(new chain3.providers.HttpProvider('http://localhost:8545'));
 //   console.log("Acct[",i,"]:",taccts[i].addr, chain3.mc.getTransactionCount(taccts[i].addr), checkBal(taccts[i].addr));
 
 //Call the function, note the input value is in 'mc'
-var src = taccts[0];
-var des = taccts[1];
+var src = taccts[1];
+var des = taccts[0];
 
 //Send the vaue in mc
 //1 mc = 1e+18 Sha
-sendTx(src, des, 0.0000000000000000001);
+sendTx(src, des, 0.1);
 
 
 return;
