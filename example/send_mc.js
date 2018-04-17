@@ -44,13 +44,15 @@ function sendTx(src, des, value){
       from: src.addr,
       nonce: chain3.intToHex(txcount),
       // 1 gwei
-      gasPrice: chain3.intToHex(400000000),//chain3.intToHex(chain3.mc.gasPrice),//chain3.intToHex(400000000),
-      gasLimit: chain3.intToHex(2000),
+      //chain3.intToHex(400000000),//
+      gasPrice: chain3.intToHex(350000000),//chain3.intToHex(chain3.mc.gasPrice),//chain3.intToHex(20000000000),
+      gasLimit: chain3.intToHex(2500),
       to: des.addr, 
       value: chain3.intToHex(chain3.toSha(value, 'mc')), 
       data: '0x00',
       shardingFlag: 0
     }
+
 
     // console.log(rawTx);
     var moactx = new transaction(rawTx);
@@ -58,7 +60,7 @@ function sendTx(src, des, value){
     //Should set the right network
     // console.log(chain3.version.network);
     //for devlop network
-    moactx.setChainId(2);//chain3.version.network);
+    moactx.setChainId(101);//chain3.version.network);
 
     //Get the account TX list to set the raw TX command nonce value
     //Requires the private key
@@ -68,6 +70,7 @@ function sendTx(src, des, value){
     var cmd2 = '0x' + moactx.serialize().toString('hex');
 
     console.log("Send cmd:", cmd2);
+
     // console.log("len", cmd2.length);
 
     // Functions to check the signature
@@ -110,12 +113,14 @@ chain3.setProvider(new chain3.providers.HttpProvider('http://localhost:8545'));
 //   console.log("Acct[",i,"]:",taccts[i].addr, chain3.mc.getTransactionCount(taccts[i].addr), checkBal(taccts[i].addr));
 
 //Call the function, note the input value is in 'mc'
-var src = taccts[1];
-var des = taccts[0];
+var src = taccts[0];
+var des = taccts[1];
 
 //Send the vaue in mc
 //1 mc = 1e+18 Sha
-sendTx(src, des, 0.1);
+var amt = 0.1; //in mc
+console.log("Send from ", src.addr, " to ", des.addr, " with ", amt);
+sendTx(src, des, amt);
 
 
 return;
