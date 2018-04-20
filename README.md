@@ -25,12 +25,12 @@ Bower
 ```bash
 bower install chain3
 ```
-
-Component
+### Meteor.js
 
 ```bash
-component install moac/chain3.js
+meteor add moaclib:chain3
 ```
+
 
 * Include `chain3.min.js` in your html file. (not required for the meteor package)
 
