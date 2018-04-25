@@ -23,10 +23,10 @@ var chain3 = new Chain3();
 //Need to add the addr and private key
 var taccts = [{
   "addr": "0x7312F4B8A4457a36827f185325Fd6B66a3f8BB8B", 
-  "key": ""
+  "key": "c75a5f85ef779dcf95c651612efb3c3b9a6dfafb1bb5375905454d9fc8be8a6b"
 },{
   "addr": "0xD814F2ac2c4cA49b33066582E4e97EBae02F2aB9", 
-  "key": ""
+  "key": "4d2a8285624bd04c2b4ceaef3a3c122f133f09923f27217bb77de87e54075a16"
 }];
 
 /*
@@ -37,12 +37,14 @@ function sendTx(src, des, chainid, value){
 
 var txcount = chain3.mc.getTransactionCount(src["addr"]);
 
+console.log("TX count:", txcount);
+
     var rawTx = {
       from: src.addr,
-      nonce: chain3.intToHex(txcount),
+      nonce: chain3.intToHex(txcount+2),
       // 1 gwei
-      gasPrice: chain3.intToHex(4000000000),//chain3.intToHex(chain3.mc.gasPrice),//chain3.intToHex(400000000),
-      gasLimit: chain3.intToHex(3000),
+      gasPrice: chain3.intToHex(420000000000),//chain3.intToHex(chain3.mc.gasPrice),//chain3.intToHex(400000000),
+      gasLimit: chain3.intToHex(22000),
       to: des.addr, 
       value: chain3.intToHex(chain3.toSha(value, 'mc')), 
       data: '0x00',
@@ -52,7 +54,7 @@ var txcount = chain3.mc.getTransactionCount(src["addr"]);
     var cmd1 = chain3.signTransaction(rawTx, src["key"]);
 
 console.log("Raw:", cmd1);
-
+// return;
     chain3.mc.sendRawTransaction(cmd1, function(err, hash) {
         if (!err){
             console.log("Succeed!: ", hash);
@@ -97,8 +99,10 @@ var des = taccts[1];
 //1 mc = 1e+18 Sha
 
 //The sign of the transaction requires the correct network id
-
-var networkid= 101
+var networkid = chain3.version.network;
+console.log("networ id", networkid);
+// return;
+// var networkid= 99
 sendTx(src, des, networkid, 1);
 
 
