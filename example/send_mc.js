@@ -41,13 +41,15 @@ console.log("TX count:", txcount);
 
     var rawTx = {
       from: src.addr,
-      nonce: chain3.intToHex(txcount+2),
+      nonce: chain3.intToHex(txcount),
       // 1 gwei
-      gasPrice: chain3.intToHex(420000000000),//chain3.intToHex(chain3.mc.gasPrice),//chain3.intToHex(400000000),
-      gasLimit: chain3.intToHex(22000),
-      to: des.addr, 
+      gasPrice: chain3.intToHex(2000000000),//chain3.intToHex(chain3.mc.gasPrice),//chain3.intToHex(400000000),
+      gasLimit: chain3.intToHex(5000000),
+      to: '0xf1f5b7a35dff6400af7ab3ea54e4e637059ef909',//des.addr, 
       value: chain3.intToHex(chain3.toSha(value, 'mc')), 
       data: '0x00',
+      shardingFlag: '0x01',
+      via: '0xD814F2ac2c4cA49b33066582E4e97EBae02F2aB9',
       chainId: chainid
     }
 
@@ -73,7 +75,7 @@ console.log("Raw:", cmd1);
 }
 
 /*
- * display the balance value - default is in MC, 
+ * display the account balance value in mc
  * in Sha, 1 mc = 1e+18 Sha
 */
 function checkBal(inadd){
@@ -97,13 +99,13 @@ var des = taccts[1];
 // return;
 //Send the vaue in mc
 //1 mc = 1e+18 Sha
+//1 xiao = 1e+9 Xiao
 
 //The sign of the transaction requires the correct network id
 var networkid = chain3.version.network;
 console.log("networ id", networkid);
-// return;
-// var networkid= 99
-sendTx(src, des, networkid, 1);
+
+sendTx(src, des, 100, 1.25138518);
 
 
 return;
