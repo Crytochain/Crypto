@@ -48,8 +48,6 @@ console.log("TX count:", txcount);
       to: '0xf1f5b7a35dff6400af7ab3ea54e4e637059ef909',//des.addr, 
       value: chain3.intToHex(chain3.toSha(value, 'mc')), 
       data: '0x00',
-      shardingFlag: '0x01',
-      via: '0xD814F2ac2c4cA49b33066582E4e97EBae02F2aB9',
       chainId: chainid
     }
 
@@ -105,7 +103,7 @@ var des = taccts[1];
 var networkid = chain3.version.network;
 console.log("networ id", networkid);
 
-sendTx(src, des, 100, 1.25138518);
+sendTx(src, des, 101, 1.25138518);
 
 
 return;
