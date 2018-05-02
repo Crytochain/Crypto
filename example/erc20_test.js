@@ -22,8 +22,6 @@ var tokenabi='[{"constant":false,"inputs":[{"name":"newSellPrice","type":"uint25
 //testnet 101
 var tokenaddress="0x1d12aec505caa2b8513cdad9a13e9d4806a1b704";//0xc9909cc2d7850b41d704b668ecaf782f17746d116007a469b16595b09b36b73c
 
-//private net 100
-var 0x8725835e7e488db289e79fbce56207d5d988d0f1;//TX HASH:0x967f496fa62078148345aca0e15cd22f4b72d61ef451f0e2cf9ab28faa9fc39a
 //Load the contract
 var tokenContract=chain3.mc.contract(JSON.parse(tokenabi));
 
@@ -37,10 +35,10 @@ var totalBal = 0;
 //Need to add the addr and private key
 var taccts = [{
   "addr": "0x7312F4B8A4457a36827f185325Fd6B66a3f8BB8B", 
-  "key": "c75a5f85ef779dcf95c651612efb3c3b9a6dfafb1bb5375905454d9fc8be8a6b"
+  "key": "cc75a5f85ef779dcf95c651612efb3c3b9a6dfafb1bb5375905454d9fc8be8a6b"
 },{
   "addr": "0xD814F2ac2c4cA49b33066582E4e97EBae02F2aB9", 
-  "key": "4d2a8285624bd04c2b4ceaef3a3c122f133f09923f27217bb77de87e54075a16"
+  "key": ""
 }];
 
 //Connect the local MOAC node through HTTP 

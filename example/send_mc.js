@@ -26,7 +26,7 @@ var taccts = [{
   "key": "c75a5f85ef779dcf95c651612efb3c3b9a6dfafb1bb5375905454d9fc8be8a6b"
 },{
   "addr": "0xD814F2ac2c4cA49b33066582E4e97EBae02F2aB9", 
-  "key": "4d2a8285624bd04c2b4ceaef3a3c122f133f09923f27217bb77de87e54075a16"
+  "key": ""
 }];
 
 /*

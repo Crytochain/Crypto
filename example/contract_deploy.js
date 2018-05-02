@@ -1,17 +1,18 @@
+/*
+ * Example program to compile a demo contract
+ * Usage:
+ * node contract_deploy.js test.sol
+*/
 var fs = require('fs');
 var solc = require('solc');
 var Chain3 = require('../index.js'); //require('chain3');
 
-/*
- * Example program to compile a demo contract
-*/
 var cmds = process.argv;
 if(cmds != null && cmds.length == 3){
   var file = cmds[2];
-  // var name = cmds[3];
 }else
 {
-  console.log("Input should have contract file and contract name:\neg: node deploy.js add.sol add");
+  console.log("Input should have contract file and contract name:\neg: node deploy.js add.sol");
   return;
 }
   var content = fs.readFileSync(file).toString();
@@ -20,13 +21,12 @@ if(cmds != null && cmds.length == 3){
     file: content
   };
 
-
+//A test account on MOAC testnet 101
+//user should replace this account with his own add and key
 var tacct = {
   "addr": "0x7312F4B8A4457a36827f185325Fd6B66a3f8BB8B", 
   "key": "c75a5f85ef779dcf95c651612efb3c3b9a6dfafb1bb5375905454d9fc8be8a6b"
 };
-// console.log("Balance:", chain3.mc.getBalance(tacct["addr"]));
-// return;
 
   var output = solc.compile({sources: input}, 1);
   console.log('contracts', Object.keys(output.contracts));
@@ -44,15 +44,14 @@ var tacct = {
   var bytecode = "0x"+ctt.bytecode;
   var abi = JSON.parse(ctt.interface);
 
-  console.log('bytecode', bytecode);
+  //Display info abouit the contract
+  //console.log('bytecode', bytecode);
   // console.log('abi', ctt.interface);
 
-  // chain3 = new Chain3(new Chain3.providers.HttpProvider("http://192.168.10.204:8545"));
   var chain3 = new Chain3();
   chain3.setProvider(new chain3.providers.HttpProvider('http://localhost:8545'));
 let gasEstimate = chain3.mc.estimateGas({data: bytecode});
 console.log("Gas Estimate on contract:", gasEstimate);
-
 //Build the raw transaction
 createContract(tacct,gasEstimate,bytecode);
 
@@ -87,7 +86,7 @@ function createContract(src, gasValue, inByteCode){
 
     var cmd1 = chain3.signTransaction(rawTx, src["key"]);    
 
-    console.log("\nSend signed TX:\n", cmd1);
+    // console.log("\nSend signed TX:\n", cmd1);
 
     chain3.mc.sendRawTransaction(cmd1, function(err, hash) {
         if (!err){
