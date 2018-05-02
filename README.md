@@ -1,11 +1,6 @@
-# MOAC JavaScript API version 0.1.2.
+# MOAC JavaScript API version 0.1.4.
 
-
-var Chain3 = require('chain3');
-
-var chain3 = new Chain3();
-
-This is the MOAC compatible JavaScript API which implements the Generic JSON RPC spec as described in the Chain3.md. It's available on npm as a node module, for bower and component as an embeddable js and as a meteor.js package.
+This is the [MOAC](https://github.com/MOACChain/moac-core) compatible JavaScript API which implements the Generic JSON RPC spec as described in the Chain3.md. It's available on npm as a node module, for bower and component as an embeddable js and as a meteor.js package.
 
 
 Some of the methods require running a local MOAC node to use this library.
@@ -38,6 +33,8 @@ meteor add moaclib:chain3
 Use the `chain3` object directly from global namespace:
 
 ```js
+var Chain3 = require('chain3');
+var chain3 = new Chain3();
 console.log(chain3); // {mc: .., db: ..., net: ...} // it's here!
 ```
 
@@ -101,10 +98,18 @@ Test a singe function.
 mocha test/chain3.mc.coinbase.js 
 ```
 
-## Some extras
+## Some examples
 
-### A simple express server
-The server directory contains the example codes to build a web server to access
+### send_mc
+
+Example codes to send moac through signed transaction.
+
+### contract_deploy
+
+Deploy a contract through chain3 RPC calls. This example requires install solc 
+`solc`
+
+build a web server to access
 the MOAC network using this API library.
 
 

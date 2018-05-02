@@ -53,16 +53,12 @@ console.log("TX count:", txcount);
 
     var cmd1 = chain3.signTransaction(rawTx, src["key"]);
 
-console.log("Raw:", cmd1);
-// return;
     chain3.mc.sendRawTransaction(cmd1, function(err, hash) {
         if (!err){
             console.log("Succeed!: ", hash);
             return hash;
         }else{
             console.log("Chain3 error:", err.message);
-            // response.success = false;
-            // response.error = err.message;
             return err.message;
         }
     

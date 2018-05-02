@@ -33,12 +33,9 @@ var tacct = {
 
   var key = Object.keys(output.contracts);
   //this is the 
+  console.log("key:", key);
   var ctt = output.contracts[key];
-   // for(var key in output.contracts){
-   //    console.log("Key:", key);
-   //    console.log(output.contracts[key].bytecode);
-   // }
-  // console.log("ctt:", output.contracts['file:addab']);
+
   if(ctt == null){
       console.log("Contract CTT is empty1");
       return;
@@ -57,11 +54,8 @@ let gasEstimate = chain3.mc.estimateGas({data: bytecode});
 console.log("Gas Estimate on contract:", gasEstimate);
 
 //Build the raw transaction
-
-
-
 createContract(tacct,gasEstimate,bytecode);
-console.log("done!========");
+
 
 /*
  * 
@@ -70,6 +64,7 @@ function createContract(src, gasValue, inByteCode){
 
     var txcount = chain3.mc.getTransactionCount(src["addr"]);
     console.log("Get tx account", txcount)
+
     //Build the raw tx obj
     //note the transaction
     var rawTx = {
@@ -83,29 +78,18 @@ function createContract(src, gasValue, inByteCode){
       shardingFlag: 0, //default is global contract
       chainId: chain3.version.network
     }
-    // var rawTx = {
-    //   from: src.addr,
-    //   nonce: chain3.intToHex(txcount),
-    //   // 1 gwei
-    //   gasPrice: chain3.intToHex(40000000000),//chain3.intToHex(chain3.mc.gasPrice),//chain3.intToHex(400000000),
-    //   gasLimit: chain3.intToHex(4200000),
-    //   to: '0x',//des.addr, 
-    //   value: chain3.intToHex(chain3.toSha(value, 'mc')), 
-    //   data: bytecode,// contract compiled code
-    //   chainId: 99
-    // }
 
     console.log(rawTx);
 
     //Get the account TX list to set the raw TX command nonce value
     //Requires the private key
-//Sign the transaction
+    //Sign the transaction
 
-var cmd1 = chain3.signTransaction(rawTx, src["key"]);    
+    var cmd1 = chain3.signTransaction(rawTx, src["key"]);    
 
-console.log("\nSend signed TX:\n", cmd1);
+    console.log("\nSend signed TX:\n", cmd1);
 
-chain3.mc.sendRawTransaction(cmd1, function(err, hash) {
+    chain3.mc.sendRawTransaction(cmd1, function(err, hash) {
         if (!err){
             
             console.log("Succeed!: ", hash);
