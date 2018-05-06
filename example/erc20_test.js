@@ -22,6 +22,7 @@ var tokenabi='[{"constant":false,"inputs":[{"name":"newSellPrice","type":"uint25
 //testnet 101
 var tokenaddress="0x1d12aec505caa2b8513cdad9a13e9d4806a1b704";//0xc9909cc2d7850b41d704b668ecaf782f17746d116007a469b16595b09b36b73c
 
+tokenaddress="0xD6E10e9eF20D41Cd1Aa9b5450F872Dc87Be02C1D";
 //Load the contract
 var tokenContract=chain3.mc.contract(JSON.parse(tokenabi));
 
