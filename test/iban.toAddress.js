@@ -11,6 +11,7 @@ describe('lib/chain3/iban', function () {
         tests.forEach(function (test) {
             it('shoud transform iban to address: ' +  test.address, function () {
                 var iban = new Iban(test.direct);
+
                 assert.deepEqual(iban.address(), test.address);
             });
         });   

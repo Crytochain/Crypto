@@ -65,9 +65,9 @@ provider.injectBatchResults(test.result);
                 count = 1;
                 // call
                 var syncing = chain3.mc[method](function(e, res){
-                console.log("Method", method, " res ", res);
+                // console.log("Method", method, " res ", res);
                     if(count === 1) {
-                        console.log("Count:", count)
+                        // console.log("Count:", count)
                         assert.isTrue(res);
                         count++;
                     } else {

@@ -7,7 +7,7 @@ var FakeHttpProvider2 = require('./helpers/FakeHttpProvider2');
 describe('chain3.mc.sendIBANTransaction', function () {
     it('should send transaction', function () {
 
-        var iban = 'XE81ETHXREGGAVOFYORK';
+        var iban = 'XE66MOACXREGGAVOFYORK';
         var address =   '0x1234567890123456789012345678901234500000';
         var exAddress = '0x1234567890123456789012345678901234567890'
 

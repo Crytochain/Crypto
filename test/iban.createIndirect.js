@@ -3,7 +3,7 @@ var Iban = require('../lib/chain3/iban.js');
 var assert = chai.assert;
 
 var tests = [
-    { institution: 'XREG', identifier: 'GAVOFYORK', expected: 'XE81ETHXREGGAVOFYORK'}
+    { institution: 'XREG', identifier: 'GAVOFYORK', expected: 'XE66MOACXREGGAVOFYORK'}
 ];
 
 describe('lib/chain3/iban', function () {

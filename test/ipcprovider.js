@@ -16,7 +16,7 @@ describe('lib/chain3/ipcprovider', function () {
     describe('send', function () {
         it('should send basic request', function () {
             var provider = new IpcProvider('', net);
-            var result = provider.send({id: 1, method: 'eth_test'});
+            var result = provider.send({id: 1, method: 'mc_test'});
 
             assert.isObject(result);
         });
@@ -25,7 +25,7 @@ describe('lib/chain3/ipcprovider', function () {
     describe('sendAsync', function () {
         it('should send basic async request', function (done) {
             var provider = new IpcProvider('', net);
-            provider.sendAsync({id: 1, method: 'eth_test'}, function (err, result) {
+            provider.sendAsync({id: 1, method: 'mc_test'}, function (err, result) {
                 assert.isObject(result);
                 done();
             });
