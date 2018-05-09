@@ -21,20 +21,18 @@ describe('mc.protocolVersion', function () {
                 chain3.setProvider(provider);
                 provider.injectResult(test.result);
                 provider.injectValidation(function (payload) {
-                    console.log("Get payload:", payload);
+                    // console.log("Get payload:", payload);
 
                     assert.equal(payload.jsonrpc, '2.0');
-                    console.log("pass 1");
+                    // console.log("pass 1");
 
                     assert.equal(payload.method, test.call);
-                    console.log("pass 2");
+                    // console.log("pass 2");
                     assert.deepEqual(payload.params, []);
-                    console.log("pass 3");
+                    // console.log("pass 3");
                 });
-console.log("Checking results???");
                 // when
                 var result = chain3.mc[method];
-                console.log("Expected:", result);
 
                 // then
                 assert.deepEqual(test.result, result);

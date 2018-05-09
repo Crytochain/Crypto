@@ -47,7 +47,7 @@ var testPolling = function (tests) {
                 provider.injectValidation(function (payload) {
                     
                     if (step === 0) {
-                        console.log(payload);
+                        // console.log(payload);
                         step = 1;
                         assert.equal(payload.jsonrpc, '2.0');
                         assert.equal(payload.method, test.firstPayload.method);
@@ -78,7 +78,7 @@ var testPolling = function (tests) {
 
                 });
             });
-            /*
+            
             it('should create && successfully poll filter when passed as callback', function (done) {
 
                 // given
@@ -120,7 +120,7 @@ var testPolling = function (tests) {
                 // when
                 var filter = chain3[test.protocol].filter.apply(chain3[test.protocol], test.args);
                 provider.injectBatchResults([test.secondResult]);
-            });*/
+            });
         }); 
     });
 };

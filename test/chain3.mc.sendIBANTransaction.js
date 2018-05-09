@@ -25,6 +25,7 @@ describe('chain3.mc.sendIBANTransaction', function () {
         provider.injectValidation(function (payload) {
             if (step === 0) {
                 step++;
+                // console.log("Payload in injectValidation:", payload);
                 assert.equal(payload.method, 'mc_call');
                 assert.deepEqual(payload.params, [{
                    data: "0x3b3b57de5852454700000000000000000000000000000000000000000000000000000000",
@@ -34,6 +35,7 @@ describe('chain3.mc.sendIBANTransaction', function () {
                 return;
             } 
             assert.equal(payload.method, 'mc_sendTransaction');
+            
             assert.deepEqual(payload.params, [{
                 data: '0xb214faa54741564f46594f524b0000000000000000000000000000000000000000000000',
                 from: address,

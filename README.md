@@ -87,9 +87,10 @@ npm run-script build
 
 ### Testing (mocha)
 Test all cases.
+May need to install package mocha first.
 
 ```bash
-npm test
+mocha
 ```
 
 Test a singe function.
@@ -103,6 +104,30 @@ mocha test/chain3.mc.coinbase.js
 ### send_mc
 
 Example codes to send moac through signed transaction.
+
+	var rawTx = {
+	      from: src.addr,
+	      nonce: chain3.intToHex(txcount),
+	      gasPrice: chain3.intToHex(2000000000),
+  	      gasLimit: chain3.intToHex(2000),
+	      to: '0xf1f5b7a35dff6400af7ab3ea54e4e637059ef909',
+	      value: chain3.intToHex(chain3.toSha(value, 'mc')), 
+	      data: '0x00',
+	      chainId: chainid
+	    }
+		
+	var cmd1 = chain3.signTransaction(rawTx, src["key"]);
+	    
+	chain3.mc.sendRawTransaction(cmd1, function(err, hash) {
+	    if (!err){
+	        console.log("Succeed!: ", hash);
+	        return hash;
+	    }else{
+	        console.log("Chain3 error:", err.message);
+	        return err.message;
+	    }
+});
+
 
 ### contract_deploy
 

@@ -7,9 +7,8 @@ var clone = function (object) { return JSON.parse(JSON.stringify(object)); };
 
 var runTests = function (obj, method, tests) {
 
-console.log("obj:", obj);
     var testName = obj ? 'chain3.' + obj : 'web';
-console.log("testname:", testName);
+// console.log("testname:", testName);
 
     describe(testName, function () {
         describe(method, function () {
