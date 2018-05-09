@@ -2,6 +2,8 @@
 
 /*
  * Example program to use the Chain3 RPC commands
+ * to display the information about the MOAC node
+ * This example requires a local running MOAC node.
  * 
 */
 
@@ -16,11 +18,6 @@ if (!chain3.isConnected()){
     return;
 }
 
-// //Create a new account
-// var account = new Web3EthAccounts('ws://localhost:8546');
-// account.create();
-
-// return;
 
 console.log("Check account balance\n=========================================\n");
 var coinbase = chain3.mc.accounts[0];//coinbase;

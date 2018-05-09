@@ -88,8 +88,7 @@ if ( chain3.isConnected() ){
     console.log(" Tcalldata:", tcalldata);
 
     let gasEstimate = chain3.mc.estimateGas({data: tcalldata});
-    console.log(" Gas Estimate on contract:", gasEstimate);
-    return;
+
     gasEstimate = 400000;
 
     //The sign of the transaction requires the correct network id
