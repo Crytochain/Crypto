@@ -23,7 +23,7 @@ var chain3 = new Chain3();
 //Need to add the addr and private key
 var taccts = [{
   "addr": "0x7312F4B8A4457a36827f185325Fd6B66a3f8BB8B", 
-  "key": "c75a5f85ef779dcf95c651612efb3c3b9a6dfafb1bb5375905454d9fc8be8a6b"
+  "key": "cc75a5f85ef779dcf95c651612efb3c3b9a6dfafb1bb5375905454d9fc8be8a6b"
 },{
   "addr": "0xD814F2ac2c4cA49b33066582E4e97EBae02F2aB9", 
   "key": ""
@@ -53,6 +53,7 @@ console.log("TX count:", txcount);
 
     var cmd1 = chain3.signTransaction(rawTx, src["key"]);
 
+    console.log("Sending raw tx to......");
     chain3.mc.sendRawTransaction(cmd1, function(err, hash) {
         if (!err){
             console.log("Succeed!: ", hash);
@@ -99,7 +100,7 @@ var des = taccts[1];
 var networkid = chain3.version.network;
 console.log("networ id", networkid);
 
-sendTx(src, des, 101, 1.25138518);
+sendTx(src, des, networkid, 1.25138518);
 
 
 return;

@@ -6,9 +6,9 @@ name: Javascript API
 # Chain3 JavaScript API
 MOAC JavaScript API was built for MOAC chain. It followed the Ethereum web3.js API routines and made it close enough so the users can easily move their Ðapp to MOAC chain. 
 
-To make a Ðapp work on MOAC network, user should use the `chain3` object provided by the [chain3.js library](https://github.com/MOACChain/chain3.js). It communicates to a local MOAC  node through [RPC calls](https://github.com/MOACChain/wiki/wiki/JSON-RPC). chain3.js works with any MOAC node, which exposes an RPC layer.
+To make a Ðapp work on MOAC network, user should use the `chain3` object provided by the [chain3.js library](https://github.com/innowells/Chain3). It communicates to a local MOAC  node through [RPC calls](https://github.com/MOACChain/moac-core/wiki/RPC). chain3.js works with any MOAC node, which exposes an RPC layer.
 
-`chain3` contains the `mc` object - `chain3.mc` (for specifically MOAC blockchain interactions) and the `shh` object - `chain3.shh` (for Whisper interaction). Over time we'll introduce other objects for each of the other chain3 protocols. Working  [examples can be found here](https://github.com/MOACChain/chain3.js/tree/master/examples).
+`chain3` contains the `mc` object - `chain3.mc` (for specifically MOAC blockchain interactions). Over time we'll introduce other objects for each of the other chain3 protocols. Working [examples can be found here](https://github.com/MOACChain/chain3.js/tree/master/examples).
 
 If you want to look at some more sophisticated examples using chain3.js check out these [useful Ðapp patterns](https://github.com/MOACChain/wiki/wiki/Useful-Ðapp-Patterns).
 

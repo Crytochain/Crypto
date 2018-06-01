@@ -26,9 +26,15 @@ tokenaddress="0xD6E10e9eF20D41Cd1Aa9b5450F872Dc87Be02C1D";
 //Load the contract
 var tokenContract=chain3.mc.contract(JSON.parse(tokenabi));
 
+
+
+//Testnetwork token, networkid = 101
+//Contract mined! address: 0xf2f4eec6c2adfcf780aae828de0b25f86506ffae 
+//transactionHash: 0x7bb694c3462764cb113e9b742faaf06adc728e70b607f8b7aa95207ee32b1c5e
+tokenaddress='0xf2f4eec6c2adfcf780aae828de0b25f86506ffae';
+
 //Load the contract methods 
 var tcalls=tokenContract.at(tokenaddress);
-
 //check the balance
 var totalBal = 0;
 
@@ -64,7 +70,7 @@ if ( chain3.isConnected() ){
   console.log("   owners:", tcalls.owner());
 
     //Display all the token balances in the accounts
-    for (var acctNum in chain3.mc.accounts) {
+    for (var acctNum =0; acctNum < 3; acctNum ++){
         var acct = chain3.mc.accounts[acctNum];
 
         //Call the contract to check the balance of the account
@@ -74,18 +80,17 @@ if ( chain3.isConnected() ){
     }
     console.log("  Total balance: " + totalBal);
 
-
-    var src = taccts[0].addr;//[chain3.mc.accounts[2];
-    var des = "0x5b09f73d3055f1e190101f560750be47d39fa1a4";//Pangu0.8.2 testnet101
+    var src = taccts[0].addr;
+    var des = taccts[1].addr;
 
     //var strData = '';
     var srcVal = tcalls.balanceOf(src);
     var desVal = tcalls.balanceOf(des);
-    var amt = 1.0;//amout in "mc"
+    var amt = 100000000000000000000;//amout in erc20 token "m02"
     
     console.log(" Transfer from:\n", src, "\n to \n", des);
     var tcalldata = tcalls.transfer.getData(des, 100000);
-    console.log(" Tcalldata:", tcalldata);
+    console.log("\n Tcalldata:", tcalldata);
 
     let gasEstimate = chain3.mc.estimateGas({data: tcalldata});
 
@@ -93,7 +98,7 @@ if ( chain3.isConnected() ){
 
     //The sign of the transaction requires the correct network id
     var networkid = chain3.version.network;
-    console.log(" networ id", networkid);
+    console.log("On network:", networkid);
 
     //Add some more gas on the estimate to ensure the call can be processed
     callContractMethod(taccts[0], tokenaddress, gasEstimate+100, networkid, tcalldata);
@@ -116,19 +121,18 @@ function callContractMethod(src, contractAddress, gasValue, inchainID, inByteCod
       from: src.addr,
       to: contractAddress, 
       nonce: chain3.intToHex(txcount),
-      gasPrice: chain3.intToHex(400000000),//chain3.intToHex(chain3.mc.gasPrice),//chain3.intToHex(400000000),
+      gasPrice: chain3.intToHex(400000000),
       gasLimit: chain3.intToHex(gasValue),
       value: '0x', 
       data: inByteCode,
-      chainId: inchainID,
-      shardingFlag: 0 //default is global contract
+      chainId: chain3.intToHex(inchainID)
     }
 
     console.log(rawTx);
 
-var cmd1 = chain3.signTransaction(rawTx, src["key"]);    
+  var cmd1 = chain3.signTransaction(rawTx, src["key"]);    
 
-console.log("\nSend signed TX:\n", cmd1);
+  console.log("\nSend signed TX:\n", cmd1);
 
   chain3.mc.sendRawTransaction(cmd1, function(err, hash) {
         if (!err){
@@ -141,8 +145,7 @@ console.log("\nSend signed TX:\n", cmd1);
             // response.error = err.message;
             return err.message;
         }
-    
-    // console.log(response);
+
     console.log("Get response from MOAC node in the feedback function!")
         // res.send(response);
     });

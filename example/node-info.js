@@ -18,7 +18,26 @@ if (!chain3.isConnected()){
     return;
 }
 
+console.log(chain3.mc.getTransactionReceipt("0xe4f09f7e1281b7919818247fb7b09f28b5beec1032ce4430131a562715475f69"));
+return;
+var result = chain3.mc.estimateGas({
+    to: "0xc4abd0339eb8d57087278718986382264244252f", 
+    data: "0xc6888fa10000000000000000000000000000000000000000000000000000000000000003"
+});
+console.log(result); // "20465"
 
+var txhash = "0xf1c1771204431c1c584e793b49d41586a923c370be93673aac42d66252bc8d0a";
+
+var transaction = chain3.mc.getTransaction(txhash);
+console.log(transaction);
+
+var receipt = chain3.mc.getTransactionReceipt(txhash);
+console.log(receipt);
+
+return;
+var info = chain3.mc.getBlock(0);
+console.log(info);
+return;
 console.log("Check account balance\n=========================================\n");
 var coinbase = chain3.mc.accounts[0];//coinbase;
 console.log(coinbase);
