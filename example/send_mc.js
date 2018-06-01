@@ -23,7 +23,7 @@ var chain3 = new Chain3();
 //Need to add the addr and private key
 var taccts = [{
   "addr": "0x7312F4B8A4457a36827f185325Fd6B66a3f8BB8B", 
-  "key": "cc75a5f85ef779dcf95c651612efb3c3b9a6dfafb1bb5375905454d9fc8be8a6b"
+  "key": ""//put the private key here
 },{
   "addr": "0xD814F2ac2c4cA49b33066582E4e97EBae02F2aB9", 
   "key": ""
@@ -45,7 +45,7 @@ console.log("TX count:", txcount);
       // 1 gwei
       gasPrice: chain3.intToHex(2000000000),//chain3.intToHex(chain3.mc.gasPrice),//chain3.intToHex(400000000),
       gasLimit: chain3.intToHex(5000000),
-      to: '0xf1f5b7a35dff6400af7ab3ea54e4e637059ef909',//des.addr, 
+      to: des.addr, 
       value: chain3.intToHex(chain3.toSha(value, 'mc')), 
       data: '0x00',
       chainId: chainid
@@ -98,7 +98,7 @@ var des = taccts[1];
 
 //The sign of the transaction requires the correct network id
 var networkid = chain3.version.network;
-console.log("networ id", networkid);
+console.log("This TX is on network ", networkid);
 
 sendTx(src, des, networkid, 1.25138518);
 
