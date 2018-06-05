@@ -8,7 +8,7 @@ MOAC JavaScript API was built for MOAC chain. It was forked from the Ethereum we
 
 To make a Ðapp work on MOAC network, user should use the `chain3` object provided by the [chain3.js library](https://github.com/MOACChain/chain3). It communicates to a local MOAC  node through [RPC calls](https://github.com/MOACChain/moac-core/wiki/RPC). chain3.js works with any MOAC node, which exposes an RPC layer.
 
-`chain3` contains the `mc` object - `chain3.mc` (for specifically MOAC blockchain interactions). Over time we'll introduce other objects for each of the other chain3 protocols. Working [examples can be found here](https://github.com/MOACChain/chain3/tree/master/examples).
+`chain3` contains the `mc` object - `chain3.mc` (for specifically MOAC blockchain interactions). Over time we'll introduce other objects for each of the other chain3 protocols. Working [examples can be found here](https://github.com/MOACChain/chain3/tree/master/example).
 
 
 ## Using callbacks

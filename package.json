@@ -63,11 +63,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/innowells/Chain3/releases"
+    "url": "https://github.com/MOACChain/chain3/releases"
   },
-  "homepage": "https://github.com/innowells/Chain3",
+  "homepage": "https://github.com/MOACChain/chain3",
   "bugs": {
-    "url": "https://github.com/innowells/Chain3/issues"
+    "url": "https://github.com/MOACChain/chain3/issues"
   },
   "keywords": [
     "MOAC",
@@ -79,7 +79,7 @@
     {
       "name": "MOAC lab",
       "email": "support@moac.io",
-      "url": "https://github.com/innowells/Chain3"
+      "url": "https://github.com/MOACChain/chain3"
     }
   ],
   "license": "LGPL-3.0"
