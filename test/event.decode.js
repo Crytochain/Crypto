@@ -168,13 +168,14 @@ var tests = [{
 }];
 
 describe('lib/chain3/event', function () {
-    describe('decode', function () {
+    describe('decode Test', function () {
         tests.forEach(function (test, index) {
             it('test no: ' + index, function () {
                 var chain3 = new Chain3();
                 var event = new SolidityEvent(chain3, test.abi, address);
-
                 var result = event.decode(test.data);
+                // console.log("Result:", result);
+                // console.log("test.exp:", test.expected);
                 assert.deepEqual(result, test.expected);
             });
         });

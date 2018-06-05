@@ -3,24 +3,8 @@ var Iban = require('../lib/chain3/iban.js');
 var assert = chai.assert;
 
 var tests = [
-    // { obj: function () {}, is: false},
-    // { obj: new Function(), is: false},
-    // { obj: 'function', is: false},
-    // { obj: {}, is: false},
-    // { obj: '[]', is: false},
-    // { obj: '[1, 2]', is: false},
-    // { obj: '{}', is: false},
-    // { obj: '{"a": 123, "b" :3,}', is: false},
-    // { obj: '{"c" : 2}', is: false},
     { obj: 'XE66MOACXREGGAVOFYORK', is: true},
-    // { obj: 'XE82MOACXREGGAVOFYORK', is: false}, // control number is invalid
-    { obj: 'XE81MCXREGGAVOFYORK', is: false},
-    // { obj: 'XE81MOACXREGGAVOFYORKD', is: false},
-    // { obj: 'XE81MOACXREGGaVOFYORK', is: false},
-    // { obj: 'XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS', is: true},
-    // { obj: 'XE7438O073KYGTWWZN0F2WZ0R8PX5ZPPZS', is: false}, // control number is invalid
-    // { obj: 'XD7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS', is: false},
-    // { obj: 'XE1222Q908LN1QBBU6XUQSO1OHWJIOS46OO', is: true}
+    { obj: 'XE81MCXREGGAVOFYORK', is: false}
 ];
 
 describe('lib/chain3/iban', function () {

@@ -1,4 +1,4 @@
-# MOAC JavaScript API version 0.1.7.
+# MOAC JavaScript API version 0.1.8.
 
 This is the [MOAC](https://github.com/MOACChain/moac-core) compatible JavaScript API which implements the Generic JSON RPC spec as described in the Chain3.md. It's available on npm as a node module, for bower and component as an embeddable js and as a meteor.js package.
 
