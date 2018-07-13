@@ -23,7 +23,7 @@ var chain3 = new Chain3();
 //Need to add the addr and private key
 var taccts = [{
   "addr": "0x7312F4B8A4457a36827f185325Fd6B66a3f8BB8B", 
-  "key": ""//put the private key here
+  "key": "cc75a5f85ef779dcf95c651612efb3c3b9a6dfafb1bb5375905454d9fc8be8a6b"//put the private key here
 },{
   "addr": "0xD814F2ac2c4cA49b33066582E4e97EBae02F2aB9", 
   "key": ""
@@ -43,17 +43,18 @@ console.log("TX count:", txcount);
       from: src.addr,
       nonce: chain3.intToHex(txcount),
       // 1 gwei
-      gasPrice: chain3.intToHex(2000000000),//chain3.intToHex(chain3.mc.gasPrice),//chain3.intToHex(400000000),
+      gasPrice: chain3.intToHex(200000000),//chain3.intToHex(chain3.mc.gasPrice),//chain3.intToHex(400000000),
       gasLimit: chain3.intToHex(5000000),
       to: des.addr, 
       value: chain3.intToHex(chain3.toSha(value, 'mc')), 
       data: '0x00',
       chainId: chainid
     }
-
+// console.log()
     var cmd1 = chain3.signTransaction(rawTx, src["key"]);
 
     console.log("Sending raw tx to......");
+    console.log("cmd:", cmd1);
     chain3.mc.sendRawTransaction(cmd1, function(err, hash) {
         if (!err){
             console.log("Succeed!: ", hash);

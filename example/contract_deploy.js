@@ -25,7 +25,7 @@ if(cmds != null && cmds.length == 3){
 //user should replace this account with his own add and key
 var tacct = {
   "addr": "0x7312F4B8A4457a36827f185325Fd6B66a3f8BB8B", 
-  "key": ""
+  "key": "cc75a5f85ef779dcf95c651612efb3c3b9a6dfafb1bb5375905454d9fc8be8a6b"
 };
 
   var output = solc.compile({sources: input}, 1);
@@ -46,8 +46,8 @@ var tacct = {
 
   //Display info abouit the contract
   //console.log('bytecode', bytecode);
-  // console.log('abi', ctt.interface);
-
+  console.log('abi', ctt.interface);
+return;
   var chain3 = new Chain3();
   chain3.setProvider(new chain3.providers.HttpProvider('http://localhost:8545'));
 let gasEstimate = chain3.mc.estimateGas({data: bytecode});
@@ -70,7 +70,7 @@ function createContract(src, gasValue, inByteCode){
       from: src.addr,
       nonce: chain3.intToHex(txcount),
       gasPrice: chain3.intToHex(420000000000),//chain3.intToHex(chain3.mc.gasPrice),//
-      gasLimit: chain3.intToHex(4200000),//chain3.intToHex(gasValue),
+      gasLimit: chain3.intToHex(9000000),//chain3.intToHex(gasValue),
       to: '0x',
       value: '0x', 
       data: inByteCode,
