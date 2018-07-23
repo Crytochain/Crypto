@@ -6,9 +6,9 @@ var u = require('./helpers/test.utils.js');
 
 describe('chain3.mc', function() {
     describe('methods', function() {
-        // u.methodExists(chain3.mc, 'getBalance');
-        // u.methodExists(chain3.mc, 'getStorageAt');
-        // u.methodExists(chain3.mc, 'getTransactionCount');
+        u.methodExists(chain3.mc, 'getBalance');
+        u.methodExists(chain3.mc, 'getStorageAt');
+        u.methodExists(chain3.mc, 'getTransactionCount');
         // u.methodExists(chain3.mc, 'getCode');
         // u.methodExists(chain3.mc, 'sendTransaction');
         // u.methodExists(chain3.mc, 'call');
