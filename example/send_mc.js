@@ -18,15 +18,20 @@ var assert = chai.assert;
 var Chain3 = require('../index.js');
 var chain3 = new Chain3();
 
+//0x01560cD3BAc62cC6D7E6380600d9317363400896
+//0xb8a9c05beeedb25df85f8d641538cbffedf67216048de9c678ee26260eb91952
 
 //test accounts
 //Need to add the addr and private key
 var taccts = [{
   "addr": "0x7312F4B8A4457a36827f185325Fd6B66a3f8BB8B", 
-  "key": ""//put the private key here
+  "key": "0xc75a5f85ef779dcf95c651612efb3c3b9a6dfafb1bb5375905454d9fc8be8a6b"//put the private key here
 },{
   "addr": "0xD814F2ac2c4cA49b33066582E4e97EBae02F2aB9", 
   "key": ""
+},{ //from metaMask
+    "addr": "0x32d6f648A651C5e458315641863A386914Adb747", 
+  "key": "B017F0530A78ACB73BC10A90720AA77F4CBEE7889CBAD5059B3BCF256A310635"
 }];
 
 /*

@@ -100,7 +100,7 @@ if ( chain3.isConnected() ){
 
     let gasEstimate = chain3.mc.estimateGas({data: tcalldata});
 
-    gasEstimate = 400000;
+    gasEstimate = 4000000;
 
     //The sign of the transaction requires the correct network id
     var networkid = chain3.version.network;
