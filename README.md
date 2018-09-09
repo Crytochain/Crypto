@@ -2,13 +2,14 @@
 
 This is the [MOAC](https://github.com/MOACChain/moac-core) compatible JavaScript API which implements the Generic JSON RPC spec as described in the Chain3.md. It's available on npm as a node module, for bower and component as an embeddable js and as a meteor.js package.
 
-v0.1.9 Add new method to get ip for local node.
-v0.1.8 Moved git repository to https://github.com/MOACChain/chain3 and fixed some bugs.
-v0.1.7 Fixed uneven signature R & S.
-v0.1.6 A complete package with all tests.
-v0.1.4 First compatible version with MOAC chain.
+* v0.1.9 Add new method to get ip for local node.
+* v0.1.8 Moved git repository to https://github.com/MOACChain/chain3 and fixed some bugs.
+* v0.1.7 Fixed uneven signature R & S.
+* v0.1.6 A complete package with all tests.
+* v0.1.4 First compatible version with MOAC chain.
 
 Some of the methods require running a local MOAC node to use this library.
+More information is in https://github.com/MOACChain/moac-core/wiki/Chain3.
 
 
 ## Installation
