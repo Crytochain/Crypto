@@ -52,6 +52,7 @@ console.log("TX count:", txcount);
       gasLimit: chain3.intToHex(5000000),
       to: des.addr, 
       value: chain3.intToHex(chain3.toSha(value, 'mc')), 
+      shardingFlag: 1,
       data: '0x00',
       chainId: chainid
     }
@@ -106,7 +107,7 @@ var des = taccts[1];
 var networkid = chain3.version.network;
 console.log("This TX is on network ", networkid);
 
-sendTx(src, des, networkid, 1.25138518);
+sendTx(src, des, networkid, 0.01);
 
 
 return;

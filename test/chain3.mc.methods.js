@@ -16,9 +16,6 @@ describe('chain3.mc', function() {
         // u.methodExists(chain3.mc, 'getTransaction');
         // u.methodExists(chain3.mc, 'getUncle');
         // u.methodExists(chain3.mc, 'getCompilers');
-        // u.methodExists(chain3.mc.compile, 'lll');
-        // u.methodExists(chain3.mc.compile, 'solidity');
-        // u.methodExists(chain3.mc.compile, 'serpent');
         // u.methodExists(chain3.mc, 'getBlockTransactionCount');
         // u.methodExists(chain3.mc, 'getBlockUncleCount');
         // u.methodExists(chain3.mc, 'filter');
