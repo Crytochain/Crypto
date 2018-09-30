@@ -1,7 +1,7 @@
 {
   "name": "chain3",
   "namespace": "MOAC",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "MOAC JavaScript API, middleware to talk to a MOAC node over RPC",
   "main": "./index.js",
   "directories": {
@@ -74,10 +74,10 @@
     "javascript",
     "API"
   ],
-  "author": "moac.io",
+  "author": "MOAC Tech",
   "authors": [
     {
-      "name": "MOAC lab",
+      "name": "MOAC Tech Inc.",
       "email": "support@moac.io",
       "url": "https://github.com/MOACChain/chain3"
     }

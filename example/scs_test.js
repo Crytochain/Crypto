@@ -29,8 +29,11 @@ console.log(balance.toString(10));
 console.log("SCS\n=========================================");
 var scsChain3 = new Chain3()
 //First, test the VNODE communications with JSON 2.0 commands
-scsChain3.setProvider(new chain3.providers.HttpProvider('http://localhost:8548'));
-mcAddress="0x9dcfcad2453f68f0fcf897a36699eb2a5bbd6f36";//MicroChain address
+// scsChain3.setProvider(new chain3.providers.HttpProvider('http://localhost:8548'));
+scsChain3.setProvider(new chain3.providers.HttpProvider('http://localhost:9000'));
+mcAddress="0xa2168dfcae4efba6b8d6076942f7419e2045d08f";//MicroChain address
+
+console.log("SCS MicroChain List:", scsChain3.scs.getMicroChainList());
 tAddress="0x1b65cE1A393FFd5960D2ce11E7fd6fDB9e991945";//scs1 id address
 console.log("SCS state:", scsChain3.scs.getDappState(mcAddress));
 console.log("SCS blockNumber:", scsChain3.scs.getBlockNumber(mcAddress));
@@ -38,7 +41,7 @@ console.log("SCS nonce:", scsChain3.scs.getNonce(mcAddress,"0xa8863fc8ce38164113
 return;
 console.log("SCS ID:", scsChain3.scs.getSCSId());
 
-console.log("SCS MicroChainb List:", scsChain3.scs.getMicroChainList());
+console.log("SCS MicroChain List:", scsChain3.scs.getMicroChainList());
 
 console.log("SCS balance:", scsChain3.scs.getBalance(mcAddress,tAddress));
 console.log("SCS state:", scsChain3.scs.getDappState(mcAddress));
