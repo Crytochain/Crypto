@@ -8,7 +8,9 @@ var errors = require('../lib/chain3/errors');
 var BigNumber = require('bignumber.js');
 var sha3 = require('../lib/utils/sha3');
 
-
+/*
+ * Global contract test 
+*/
 var desc = [{
     "name": "balance(address)",
     "type": "function",

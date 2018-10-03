@@ -37,8 +37,10 @@ var formattedBlockResult = {
 //"extraData":"0x","hash":"0x10524b2f730b014cf080e6bd3e98218c5acf15addb1cccb00963cfa0201f4614","number":"0x1","parentHash":"0x0000000000000000000000000000000000000000000000000000000000000000","receiptsRoot":"0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421","stateRoot":"0x5a5d1b1f61eb711eded3bcd30dad3e53f8bfbe66ca135af3e02af24dcbaa0e91","timestamp":"0x0","transactions":[],"transactionsRoot":"0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"}}
 
 var tests = [{
-    args: ['0x2dbab4c0612bf9caf4c195085547dc0612bf9caf4c1950855'],
-    formattedArgs: ['0x2dbab4c0612bf9caf4c195085547dc0612bf9caf4c1950855'],
+    // args: ['0x2dbab4c0612bf9caf4c195085547dc0612bf9caf4c1950855', 1],
+    // formattedArgs: ['0x2dbab4c0612bf9caf4c195085547dc0612bf9caf4c1950855',1],
+    args: ['0x000000000000000000000000000000000000012d', 2],
+    formattedArgs: ['0x000000000000000000000000000000000000012d', '0x2'],
     result: blockResult,
     formattedResult: formattedBlockResult,
     call: 'scs_'+ method
