@@ -1,14 +1,13 @@
 #!/usr/bin/env node
 
 /*
- * Example program to use the Chain3 RPC commands
+ * Example program to use the Chain3 VNODE package
+ * to get the  commands
  * 
 */
 
 var Chain3 = require('../index.js');
 var chain3 = new Chain3();
-var fs = require('fs');
-var stream = fs.createWriteStream("test.csv");
 
 chain3.setProvider(new chain3.providers.HttpProvider('http://localhost:8545'));
 
