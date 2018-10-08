@@ -4,7 +4,7 @@ var Chain3 = require('../index');
 var chain3 = new Chain3();
 var FakeHttpProvider = require('./helpers/FakeHttpProvider');
 
-var method = 'getSCSId';
+var method = 'getNonce';
 
 // Test object
 // need to have input args, output results and formatted results
