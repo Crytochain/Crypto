@@ -4,7 +4,7 @@ var Chain3 = require('../index');
 var chain3 = new Chain3();
 var FakeHttpProvider = require('./helpers/FakeHttpProvider');
 
-var method = 'getNonce';
+var method = 'getSCSId';
 
 // Test object
 // need to have input args, output results and formatted results
@@ -21,11 +21,11 @@ var tests = [{
 describe('chain3.scs', function () {
     describe(method, function () {
         tests.forEach(function (test, index) {
-            it('getNonce test: ' + index, function () {
+            it('getSCSId test: ' + index, function () {
                 
                 // given the result to the FakeProvider
                 var provider = new FakeHttpProvider();
-                chain3.setProvider(provider);
+                chain3.setScsProvider(provider);
                 provider.injectResult(test.result);
 
                 provider.injectValidation(function (payload) {
@@ -42,11 +42,11 @@ describe('chain3.scs', function () {
                 assert.strictEqual(test.formattedResult, result);
             });
             
-            it('async get getNonce test: ' + index, function (done) {
+            it('async get getSCSId test: ' + index, function (done) {
                 
                 // given
                 var provider = new FakeHttpProvider();
-                chain3.setProvider(provider);
+                chain3.setScsProvider(provider);
                 provider.injectResult(test.result);
                 provider.injectValidation(function (payload) {
                     assert.equal(payload.jsonrpc, '2.0');

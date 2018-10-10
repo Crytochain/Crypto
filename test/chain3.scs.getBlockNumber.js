@@ -23,7 +23,7 @@ describe('chain3.scs', function () {
                 
                 // given the result to the FakeProvider
                 var provider = new FakeHttpProvider();
-                chain3.setProvider(provider);
+                chain3.setScsProvider(provider);
                 provider.injectResult(test.result);
                 provider.injectValidation(function (payload) {
                     assert.equal(payload.jsonrpc, '2.0');
@@ -42,7 +42,7 @@ describe('chain3.scs', function () {
                 
                 // given
                 var provider = new FakeHttpProvider();
-                chain3.setProvider(provider);
+                chain3.setScsProvider(provider);
                 provider.injectResult(test.result);
                 provider.injectValidation(function (payload) {
                     assert.equal(payload.jsonrpc, '2.0');

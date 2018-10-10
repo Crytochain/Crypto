@@ -1,7 +1,7 @@
 var BigNumber = require('bignumber.js');
 var Chain3 = require('../index');
 var chain3 = new Chain3();
-var testMethod = require('./helpers/test.method.js');
+var testMethod = require('./helpers/test.scsmethod.js');
 
 /*
  * Return the Account balance in a MicroChain
