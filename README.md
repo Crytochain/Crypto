@@ -16,6 +16,8 @@ To use vnode methods, need to enable the vnode APIs in MOAC node by:
 To use scs methods, need to enable the SCS RPC ports by:
 --rpc2
 
+More information is in https://github.com/MOACChain/moac-core/wiki/Chain3.
+
 
 ## Installation
 
