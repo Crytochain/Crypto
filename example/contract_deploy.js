@@ -47,11 +47,12 @@ var tacct = {
   //Display info abouit the contract
   //console.log('bytecode', bytecode);
   console.log('abi', ctt.interface);
-return;
+
   var chain3 = new Chain3();
   chain3.setProvider(new chain3.providers.HttpProvider('http://localhost:8545'));
 let gasEstimate = chain3.mc.estimateGas({data: bytecode});
 console.log("Gas Estimate on contract:", gasEstimate);
+return;
 //Build the raw transaction
 createContract(tacct,gasEstimate,bytecode);
 
