@@ -25,6 +25,8 @@ console.log("SCS state:", chain3.scs.getDappState(mcAddress));
 console.log("MC info:", chain3.scs.getMicroChainInfo(mcAddress));
 
 console.log("SCS blockNumber:", chain3.scs.getBlockNumber(mcAddress));
+console.log("SCS block 1:", chain3.scs.getBlock(mcAddress, '0x1'));
+console.log("SCS blockList 1 - 3:", chain3.scs.getBlockList(mcAddress, 1, 3));
 
 return;
 

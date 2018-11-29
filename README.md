@@ -1,8 +1,9 @@
-# MOAC JavaScript API version 0.1.12.
+# MOAC JavaScript API version 0.1.13.
 
 This is the [MOAC](https://github.com/MOACChain/moac-core) compatible JavaScript API which implements the Generic JSON RPC spec as described in the Chain3.md. It's available on npm as a node module, for bower and component as an embeddable js and as a meteor.js package.
 
-* v0.1.12 Fixed Readme and missing getMicroChainInfo method.
+* v0.1.13 Added scs_getBlockList method.
+* v0.1.12 Fixed Readme and missing scs_getMicroChainInfo method.
 * v0.1.11 Added scs method getMicroChainInfo to work with subchain explorer.
 * v0.1.10 Added vnode and scs methods to work with MicroChains.
 * v0.1.9 Added new method to get ip for local node.
@@ -18,7 +19,7 @@ To use vnode methods, need to enable the vnode APIs in MOAC node by:
 To use scs methods, need to enable the SCS RPC ports by:
 --rpc
 
-More information is in https://github.com/MOACChain/moac-core/wiki/Chain3.
+More information is in Chain3.md or [MOAC wiki](https://github.com/MOACChain/moac-core/wiki/Chain3).
 
 
 ## Installation
@@ -53,7 +54,7 @@ var chain3 = new Chain3();
 console.log(chain3); // {mc: .., net: ...} // it's here!
 ```
 
-Set a provider (HttpProvider)
+Set a provider (HttpProvider) with VNODE:
 
 ```js
 if (typeof chain3 !== 'undefined') {
@@ -77,8 +78,8 @@ var coinbase = chain3.mc.coinbase;
 var balance = chain3.mc.getBalance(coinbase);
 ```
 
-To work with SCS servers, need to enable the rpc port on SCS monitors.
-Set the scsProvider for chain3. 
+To work with SCS servers, need to enable the rpc port on SCS monitors
+and set the scsProvider for chain3. 
 
 ```js
 if (typeof chain3 !== 'undefined') {

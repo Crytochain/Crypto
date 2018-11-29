@@ -4,11 +4,12 @@ name: Javascript API
 ---
 
 # Chain3 JavaScript API
-MOAC JavaScript API was built for MOAC chain. It was forked from the Ethereum web3.js API routines and made it close enough so the users can easily move their Ðapp to MOAC chain. 
+MOAC JavaScript API was built for MOAC chain. It was developed based on the Ethereum web3.js API routines and made some methods compatiable with the web3.js methods so the users can easily move their Ðapp to MOAC chain. In
+Chain3 also supported additional methods for MOAC platform, such as VNODE and SCS methods.
 
-To make a Ðapp work on MOAC network, user should use the `chain3` object provided by the [chain3.js library](https://github.com/MOACChain/chain3). It communicates to a local MOAC  node through [RPC calls](https://github.com/MOACChain/moac-core/wiki/RPC). chain3.js works with any MOAC node, which exposes an RPC layer.
+To make a Ðapp work on MOAC network, user should use the `chain3` object provided by the [chain3.js library](https://github.com/MOACChain/chain3). It communicates to a local MOAC  node through [JSON RPC](https://github.com/MOACChain/moac-core/wiki/JSON-RPC). chain3.js works with any MOAC VNODE and SCS, which exposes an RPC layer.
 
-`chain3` contains the `mc` object - `chain3.mc` (for specifically MOAC blockchain interactions). Over time we'll introduce other objects for each of the other chain3 protocols. Working [examples can be found here](https://github.com/MOACChain/chain3/tree/master/example).
+`chain3` contains the `mc` object - `chain3.mc` (for specifically MOAC Mother blockchain interactions), and the `scs` object - `chain3.scs` (for MicroChain interactions). Over time we'll introduce other objects for each of the other chain3 protocols. Working [examples can be found here](https://github.com/MOACChain/chain3/tree/master/example).
 
 
 ## Using callbacks
@@ -142,6 +143,22 @@ balance.plus(21).toString(10); // toString(10) converts it to a number string, b
       * [client](#chain3mcibanclient)
       * [address](#chain3mcibanaddress)
       * [toString](#chain3mcibantostring)
+  	* [vnode](#chain3vnode)
+	  	* [vnodeAddress](#chain3vnode_address)
+  		* [scsService](#vnode_scsservice)
+  		* [serviceCfg](#vnode_servicecfg)
+  		* [showToPublic](#vnode_showtopublic)
+  		* [vnodeIP](#vnode_vnodeip)
+  	* [scs](#chain3scs)
+  	  * [directCall](#scs_directcall)
+  	  * [getBlock](#scs_getblock)
+  	  * [getBlockNumber](#scs_getblocknumber)
+  	  * [getDappState](#scs_getdappstate)
+  	  * [getMicroChainList](#scs_getmicrochainlist)
+  	  * [getMicroChainInfo](#scs_getmicrochaininfo)
+  	  * [getNonce](#scs_getnonce)
+  	  * [getSCSId](#scs_getscsid)
+  	  * [getTransactionReceipt](#scs_gettransactionreceipt)
 
 ### Usage
 ***
@@ -1974,4 +1991,160 @@ console.log(address); // '00c5496aee77c1ba1f0854206a26dda82a81d6d8'
 ```js
 var i = new chain3.mc.iban('XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS');
 console.log(i.toString()); // 'XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS'
+```
+
+***
+
+<h4 id="chain3vnode_address">chain3.vnode.address </h4>
+
+
+```js
+chain3.setProvider(new chain3.providers.HttpProvider('http://localhost:8545'));
+console.log("VNODE:", chain3.vnode.address);
+```
+
+***
+
+<h4 id="vnode_scsservice">chain3.vnode.scsService </h4>
+
+
+```js
+console.log("VNODE service:", chain3.vnode.scsService);
+```
+
+***
+
+<h4 id="vnode_servicecfg">chain3.vnode.servicecfg </h4>
+
+
+```js
+console.log("VNODE servicecfg:", chain3.vnode.servicecfg);
+```
+
+
+***
+
+<h4 id="vnode_showtopublic">chain3.vnode.showToPublic </h4>
+
+
+```js
+console.log("VNODE showToPublic:", chain3.vnode.showToPublic);
+```
+
+
+***
+
+<h4 id="vnode_vnodeip">chain3.vnode.ip </h4>
+
+
+```js
+console.log("VNODE IP:", chain3.vnode.ip);
+```
+
+***
+
+<h4 id="scs_directcall">chain3.scs.directCall </h4>
+
+
+```js
+console.log("Get MicroChain constant call:", chain3.scs.directCall(tx));
+```
+
+***
+
+<h4 id="scs_getblock">chain3.scs.getBlock </h4>
+
+
+```js
+chain3.setScsProvider(new chain3.providers.HttpProvider('http://localhost:8548'));
+mlist = chain3.scs.getMicroChainList();
+console.log("SCS MicroChain List:", mlist);
+mcAddress=mlist[0];
+console.log("block 1:", chain3.scs.getBlock(mcAddress, '0x1'));
+```
+
+***
+
+<h4 id="scs_getblocklist">chain3.scs.getBlockList </h4>
+
+
+```js
+chain3.setScsProvider(new chain3.providers.HttpProvider('http://localhost:8548'));
+mlist = chain3.scs.getMicroChainList();
+console.log("SCS MicroChain List:", mlist);
+mcAddress=mlist[0];
+console.log("block 1:", chain3.scs.getBlock(mcAddress, '0x1', '0x5'));
+```
+
+***
+
+<h4 id="scs_getblocknumber">chain3.scs.getBlockNumber</h4>
+
+
+```js
+console.log("MicroChain block number:", chain3.scs.getBlockNumber('0xECd1e094Ee13d0B47b72F5c940C17bD0c7630326'));
+```
+
+***
+
+<h4 id="scs_getdappstate">chain3.scs.getDappState</h4>
+
+
+```js
+console.log("MicroChain status:", chain3.scs.getDappState('0xECd1e094Ee13d0B47b72F5c940C17bD0c7630326'));
+```
+
+***
+
+<h4 id="scs_getmicrochainlist">chain3.scs.getMicroChainList </h4>
+
+
+```js
+chain3.setScsProvider(new chain3.providers.HttpProvider('http://localhost:8548'));
+mlist = chain3.scs.getMicroChainList();
+console.log("SCS MicroChain List:", mlist);
+```
+
+***
+
+<h4 id="scs_getmicrochaininfo">chain3.scs.getMicroChainInfo </h4>
+
+
+```js
+chain3.setScsProvider(new chain3.providers.HttpProvider('http://localhost:8548'));
+minfo = chain3.scs.getMicroChainInfo('0xECd1e094Ee13d0B47b72F5c940C17bD0c7630326');
+console.log("SCS MicroChain Info:", minfo);
+```
+
+
+***
+
+<h4 id="scs_getnonce">chain3.scs.getNonce </h4>
+
+
+```js
+chain3.setScsProvider(new chain3.providers.HttpProvider('http://localhost:8548'));
+console.log("Account Nonce on MicroChain:", chain3.scs.getNonce('0xECd1e094Ee13d0B47b72F5c940C17bD0c7630326', '0x7d0cba876cb9da5fa310a54d29f4687f5dd93fd7'));
+```
+
+
+***
+
+<h4 id="scs_getscsid">chain3.scs.getScsid </h4>
+
+
+```js
+chain3.setScsProvider(new chain3.providers.HttpProvider('http://localhost:8548'));
+console.log("SCS ID:", chain3.scs.getScsid());
+```
+
+
+***
+
+<h4 id="scs_gettransactionreceipt">chain3.scs.getTransactionReceipt </h4>
+
+
+```js
+txreceipt = chain3. scs.getTransactionReceipt('0xECd1e094Ee13d0B47b72F5c940C17bD0c7630326','0x38c9536cc53920017fb5edeea80d181f52e1d52c75b194c8a08485ebe0ed538e');
+console.log("MicroChain TX Info:", txreceipt);
 ```
