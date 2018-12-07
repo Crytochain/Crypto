@@ -1,7 +1,8 @@
-# MOAC JavaScript API version 0.1.13.
+# MOAC JavaScript API version 0.1.14.
 
 This is the [MOAC](https://github.com/MOACChain/moac-core) compatible JavaScript API which implements the Generic JSON RPC spec as described in the Chain3.md. It's available on npm as a node module, for bower and component as an embeddable js and as a meteor.js package.
 
+* v0.1.14 Fixed missing .
 * v0.1.13 Added scs_getBlockList method.
 * v0.1.12 Fixed Readme and missing scs_getMicroChainInfo method.
 * v0.1.11 Added scs method getMicroChainInfo to work with subchain explorer.
