@@ -65,14 +65,14 @@ console.log("TX count:", txcount);
 
     var rawTx = {
       from: src.addr,
-      nonce: chain3.intToHex(txcount),
+      nonce: chain3.intToHex(3),//chain3.intToHex(txcount),
       // 1 gwei
       gasPrice: chain3.intToHex(20000000000),//chain3.intToHex(chain3.mc.gasPrice),//chain3.intToHex(400000000),
       gasLimit: chain3.intToHex(1000),
       to: des.addr, 
       value: chain3.intToHex(chain3.toSha(value, 'mc')), 
       shardingFlag: 0,
-      data: '0x00',
+      data: '0x',
       chainId: chainid
     }
     
@@ -81,6 +81,7 @@ console.log("TX count:", txcount);
 
     console.log("Sending raw tx to......");
     console.log("cmd:", cmd1);
+    // return;
 
     chain3.mc.sendRawTransaction(cmd1, function(err, hash) {
         if (!err){
@@ -126,7 +127,7 @@ var des = taccts[1];
 var networkid = chain3.version.network;
 console.log("This TX is on network ", networkid);
 
-sendTx(src, des, 101, 1);
+sendTx(src, des, 100, 1);
 
 
 return;
