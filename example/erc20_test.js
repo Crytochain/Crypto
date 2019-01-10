@@ -141,8 +141,6 @@ function callContractMethod(src, contractAddress, gasValue, inchainID, inByteCod
             return hash;
         }else{
             console.log("Chain3 error:", err.message);
-            // response.success = false;
-            // response.error = err.message;
             return err.message;
         }
 
