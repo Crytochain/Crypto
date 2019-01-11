@@ -1,7 +1,7 @@
 {
   "name": "chain3",
   "namespace": "MOAC",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "MOAC JavaScript API, middleware to talk to a MOAC node over RPC",
   "main": "./index.js",
   "directories": {
@@ -10,16 +10,18 @@
     "example": "examples"
   },
   "dependencies": {
+    "base-x": "*",
     "bignumber.js": "git+https://github.com/frozeman/bignumber.js-nolookahead.git",
     "crypto-js": "^3.1.4",
+    "eth-lib": "0.2.7",
+    "ethereumjs-wallet": "^0.6.2",
+    "hash.js": "^1.0.0",
+    "number-to-bn": "*",
+    "secp256k1": "^3.0.1",
+    "sprintf-js": "^1.1.2",
+    "underscore": "^1.8.3",
     "utf8": "^2.1.1",
     "xhr2": "*",
-    "base-x": "*",
-    "eth-lib": "0.2.7",
-    "hash.js": "^1.0.0",
-    "secp256k1": "^3.0.1",
-    "number-to-bn": "*",
-    "underscore": "^1.8.3",
     "xmlhttprequest": "*"
   },
   "browser": {

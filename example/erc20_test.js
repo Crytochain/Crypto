@@ -23,8 +23,10 @@ var tokenabi='[{"constant":false,"inputs":[{"name":"newSellPrice","type":"uint25
 var tokenContract=chain3.mc.contract(JSON.parse(tokenabi));
 
 //Testnetwork token, networkid = 101
-var tokenaddress='0xf2f4eec6c2adfcf780aae828de0b25f86506ffae';
-
+// var tokenaddress='0xf2f4eec6c2adfcf780aae828de0b25f86506ffae';
+// Devnetwork, basicToken.sol
+var tokenaddress='0x2e7789CEea3243B8B738D6fC40585EFC2095c93F';
+// 0xe19b0defd6cd0b2cfae2d66c474895b076b0336aff8d4367f043c978b4ead6ef
 //Load the contract methods 
 var tcalls=tokenContract.at(tokenaddress);
 
@@ -99,6 +101,7 @@ if ( chain3.isConnected() ){
     //The sign of the transaction requires the correct network id
     var networkid = chain3.version.network;
     console.log("On network:", networkid);
+    return;
 
     //Add some more gas on the estimate to ensure the call can be processed
     callContractMethod(taccts[0], tokenaddress, gasEstimate+100, networkid, tcalldata);

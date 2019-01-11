@@ -1,5 +1,8 @@
 node_modules/
+package-lock.json
+test/chain3.scs.getBlock.js
+test/dappTest.js
 dist/
-
+.node*
 .npm/*
 .vscode/*
