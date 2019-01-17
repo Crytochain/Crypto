@@ -5,7 +5,7 @@ var BigNumber = require('bignumber.js');
 var assert = chai.assert;
 
 /*
- * Test the sign of the message
+ * Test the verify of the MOAC signature of the message
 */
 var tests = [
     { msg: '0x7ab47b997cbb195fc158676188647d872de050ca7d4aee1c52756d9458522356', signature: '0x2684060a86a5f2cfeecc8cd1a7590357d888852d22bbc5f9b5aa58b19a3477945ff8ebb4983701b8efce66fd011b392bd8506239394d2392426443b58691eb121b'},
@@ -14,7 +14,7 @@ var tests = [
 
 var tacct = {
   "addr": "0x7312F4B8A4457a36827f185325Fd6B66a3f8BB8B", 
-  "key": "0xc75a5f85ef779dcf95c651612efb3c3b9a6dfafb1bb5375905454d9fc8be8a6b"//put the private key here
+  "key": ""
 };
 
 describe('lib/utils/accounts', function () {
@@ -22,7 +22,6 @@ describe('lib/utils/accounts', function () {
         tests.forEach(function (test) {
             it('should verify ' + test.msg + ' and ' + test.signature, function () {
                 assert.strictEqual(chain3.verifyMcSignature(test.msg, test.signature, tacct.addr), true);
-                // chain3.verifyMcSignature(sha3Msg, s2, tacct.addr)
             });
         });
     });

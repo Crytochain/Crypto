@@ -101,7 +101,6 @@ if ( chain3.isConnected() ){
     //The sign of the transaction requires the correct network id
     var networkid = chain3.version.network;
     console.log("On network:", networkid);
-    return;
 
     //Add some more gas on the estimate to ensure the call can be processed
     callContractMethod(taccts[0], tokenaddress, gasEstimate+100, networkid, tcalldata);
