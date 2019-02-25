@@ -24,7 +24,7 @@ var tokenContract=chain3.mc.contract(JSON.parse(tokenabi));
 
 //Testnetwork token, networkid = 101
 // var tokenaddress='0xf2f4eec6c2adfcf780aae828de0b25f86506ffae';
-// Devnetwork, basicToken.sol
+// Devnetwork, basicToken.sol, networkid=100
 var tokenaddress='0x2e7789CEea3243B8B738D6fC40585EFC2095c93F';
 // 0xe19b0defd6cd0b2cfae2d66c474895b076b0336aff8d4367f043c978b4ead6ef
 //Load the contract methods 
@@ -46,6 +46,7 @@ var taccts = [{
 
 //Connect the local MOAC node through HTTP 
 chain3.setProvider(new chain3.providers.HttpProvider('http://localhost:8545'));
+// chain3.setProvider(new chain3.providers.HttpProvider('http://gateway.moac.io/testnet'));
 
 if ( chain3.isConnected() ){
 
@@ -79,16 +80,17 @@ if ( chain3.isConnected() ){
     var src = taccts[0].addr;
     // var des = "0x3f41bf4e6d18e1ee9ac13a14f8feffaa1ecebb93";
     var des = "0x54f3FB40df3cf0d234839ae237e8C500faBd71A9";//taccts[1].addr;
+    des = "0x6Ee29762855f5cf1f6585c81FA48Fc119AF1c8D3";
     console.log("src bal:", src, ":",tcalls.balanceOf(src).toString(10));
     console.log("des bal:", des, ":",tcalls.balanceOf(des).toString(10));
-
+return;
     //var strData = '';
     var srcVal = tcalls.balanceOf(src);
     var desVal = tcalls.balanceOf(des);
     // return;
     // 1234567889999999899999999999999689869
     // 1234567890987654321
-    var amt = 1234567890987654321;//amout in erc20 token "m02"
+    var amt = 123456789987654321;//amout in erc20 token "m02"
 
     console.log(" Transfer from:\n", src, "\n to \n", des);
     var tcalldata = tcalls.transfer.getData(des, amt);

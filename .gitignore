@@ -1,3 +1,4 @@
+scs/
 node_modules/
 test/chain3.scs.getBlock.js
 test/dappTest.js

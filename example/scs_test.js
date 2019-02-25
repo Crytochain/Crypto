@@ -14,6 +14,9 @@ var chain3 = new Chain3();
 console.log("SCS\n=========================================");
 //First, test the VNODE communications with JSON 2.0 commands
 chain3.setScsProvider(new chain3.providers.HttpProvider('http://localhost:8548'));
+// Lianwen MicroChain
+// http://nodesapi.moac.io/MonitorAddr/0xb178a34071b5037ec762faf1b7a5082a396caba1
+// chain3.setScsProvider(new chain3.providers.HttpProvider('http://59.111.104.184:8546'));
 
 
 // This JSON list the microChain running on the SCS server
