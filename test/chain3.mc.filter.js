@@ -22,7 +22,7 @@ var tests = [{
     result: '0xf',
     formattedResult: '0xf',
     call: 'mc_newFilter'
-},{
+}, {
     args: [{
         fromBlock: 'latest',
         toBlock: 'latest',
@@ -37,13 +37,13 @@ var tests = [{
     result: '0xf',
     formattedResult: '0xf',
     call: 'mc_newFilter'
-},{
+}, {
     args: ['latest'],
     formattedArgs: [],
     result: '0xf',
     formattedResult: '0xf',
     call: 'mc_newBlockFilter'
-},{
+}, {
     args: ['pending'],
     formattedArgs: [],
     result: '0xf',
@@ -54,51 +54,55 @@ var tests = [{
 describe('chain3.mc', function () {
     describe(method, function () {
         tests.forEach(function (test, index) {
-            it('property test: ' + index, function () {
+            it('property test: ' + index, function (done) {
 
                 // given
-               var provider = new FakeHttpProvider();
-               chain3.reset();
-               chain3.setProvider(provider);
-               provider.injectResult(test.result);
-               provider.injectValidation(function (payload) {
-                   assert.equal(payload.jsonrpc, '2.0');
-                   assert.equal(payload.method, test.call);
-                   assert.deepEqual(payload.params, test.formattedArgs);
-               });
+                var provider = new FakeHttpProvider();
+                chain3.reset();
+                chain3.setProvider(provider);
+                provider.injectResult(test.result);
+                provider.injectValidation(function (payload) {
+                    assert.equal(payload.jsonrpc, '2.0');
+                    assert.equal(payload.method, test.call);
+                    assert.deepEqual(payload.params, test.formattedArgs);
+                });
 
-               // call
-               var filter = chain3.mc[method].apply(chain3.mc, test.args);
+                // call
+                var filter = chain3.mc[method].apply(chain3.mc, test.args);
 
-               // test filter.get
-               if(typeof test.args === 'object') {
+                // test filter.get
+                if (typeof test.args === 'object') {
 
-                   var logs = [{data: '0xb'}, {data: '0x11'}];
+                    var logs = [{
+                        data: '0xb'
+                    }, {
+                        data: '0x11'
+                    }];
 
-                   provider.injectResult(logs);
-                   provider.injectValidation(function (payload) {
-                       assert.equal(payload.jsonrpc, '2.0');
-                       assert.equal(payload.method, 'mc_getFilterLogs');
-                       assert.deepEqual(payload.params, [test.formattedResult]);
-                   });
+                    provider.injectResult(logs);
+                    provider.injectValidation(function (payload) {
+                        assert.equal(payload.jsonrpc, '2.0');
+                        assert.equal(payload.method, 'mc_getFilterLogs');
+                        assert.deepEqual(payload.params, [test.formattedResult]);
+                    });
 
-                   // sync should throw an error
-                   try {
-                       assert.throws(filter.get());
-                   } catch(e){
-                       assert.instanceOf(e, Error);
-                   }
+                    // sync should throw an error
+                    try {
+                        assert.throws(filter.get());
+                    } catch (e) {
+                        assert.instanceOf(e, Error);
+                    }
 
-                   // async should get the fake logs
-                   filter.get(function(e, res){
-                       assert.equal(logs, res);
-                       chain3.reset();
-                       done();
-                   });
-               }
+                    // async should get the fake logs
+                    filter.get(function (e, res) {
+                        assert.deepEqual(logs, res);
+                        chain3.reset();
+                        done();
+                    });
+                }
             });
 
-            it('should call filterCreationErrorCallback on error while filter creation', function () {
+            it('should call filterCreationErrorCallback on error while filter creation', function (done) {
                 // given
                 var provider = new FakeHttpProvider();
                 chain3.reset();
@@ -116,4 +120,3 @@ describe('chain3.mc', function () {
         });
     });
 });
-
