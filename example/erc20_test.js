@@ -29,7 +29,7 @@ var tokenaddress='0x2e7789CEea3243B8B738D6fC40585EFC2095c93F';
 // 0xe19b0defd6cd0b2cfae2d66c474895b076b0336aff8d4367f043c978b4ead6ef
 //Load the contract methods 
 var tcalls=tokenContract.at(tokenaddress);
-
+return;
 //check the balance
 var totalBal = 0;
 
@@ -145,8 +145,6 @@ function callContractMethod(src, contractAddress, gasValue, inchainID, inByteCod
             return hash;
         }else{
             console.log("Chain3 error:", err.message);
-            // response.success = false;
-            // response.error = err.message;
             return err.message;
         }
 

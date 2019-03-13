@@ -24,7 +24,7 @@ console.log("total block:", latestBlock);
 var filter = chain3.mc.filter({
   fromBlock: 0,
   toBlock: 'latest',
-  address: '0xd814f2ac2c4ca49b33066582e4e97ebae02f2ab9'
+  address: '0x7312f4b8a4457a36827f185325fd6b66a3f8bb8b'
 
 });
 
