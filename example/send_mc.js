@@ -21,9 +21,9 @@ var chain3 = new Chain3();
 
 //Set up the server to the MOAC node
 //https://gateway.moac.io/
-// chain3.setProvider(new chain3.providers.HttpProvider('http://localhost:8545'));
+chain3.setProvider(new chain3.providers.HttpProvider('http://localhost:8545'));
 // chain3.setProvider(new chain3.providers.HttpProvider('Http://gateway.moac.io/testnet'));
-chain3.setProvider(new chain3.providers.HttpProvider('Http://gateway.moac.io/mainnet'));
+// chain3.setProvider(new chain3.providers.HttpProvider('Http://gateway.moac.io/mainnet'));
 //The sign of the transaction requires the correct network id
 var networkid = chain3.version.network;
 console.log("This TX is on network ", networkid);
@@ -67,7 +67,7 @@ console.log("TX count:", txcount);
       from: src.addr,
       nonce: chain3.intToHex(txcount),
       // 1 gwei
-      gasPrice: chain3.intToHex(20000000000),//chain3.intToHex(chain3.mc.gasPrice),//chain3.intToHex(400000000),
+      gasPrice: chain3.intToHex(40000000000),//chain3.intToHex(chain3.mc.gasPrice),//chain3.intToHex(400000000),
       gasLimit: chain3.intToHex(6000),
       to: "0x7a08dBdAe5ae62665FA02305d107640b8b8022de",//des.addr, 
       value: chain3.intToHex(chain3.toSha(value, 'mc')), 
