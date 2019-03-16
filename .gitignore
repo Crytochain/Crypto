@@ -1,7 +1,8 @@
-node_modules/
-test/chain3.scs.getBlock.js
-test/dappTest.js
+node_modules/*
+package-lock.json
 dist/
 .node*
 .npm/*
 .vscode/*
+.DS_Store
+coverage

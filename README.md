@@ -1,7 +1,9 @@
-# MOAC JavaScript API version 0.1.13.
+# MOAC JavaScript API version 0.1.15.
 
 This is the [MOAC](https://github.com/MOACChain/moac-core) compatible JavaScript API which implements the Generic JSON RPC spec as described in the Chain3.md. It's available on npm as a node module, for bower and component as an embeddable js and as a meteor.js package.
 
+* v0.1.15 Added local MOAC sign and verify signature methods.
+* v0.1.14 Fixed document errors.
 * v0.1.13 Added scs_getBlockList method.
 * v0.1.12 Fixed Readme and missing scs_getMicroChainInfo method.
 * v0.1.11 Added scs method getMicroChainInfo to work with subchain explorer.
@@ -144,30 +146,30 @@ mocha test/chain3.mc.coinbase.js
 ### send_mc
 
 Example codes to send moac through signed transaction.
+```js
+var rawTx = {
+      from: src.addr,
+      nonce: chain3.intToHex(txcount),
+      gasPrice: chain3.intToHex(2000000000),
+      gasLimit: chain3.intToHex(2000),
+      to: '0xf1f5b7a35dff6400af7ab3ea54e4e637059ef909',
+      value: chain3.intToHex(chain3.toSha(value, 'mc')), 
+      data: '0x00',
+      chainId: chainid
+    }
 
-	var rawTx = {
-	      from: src.addr,
-	      nonce: chain3.intToHex(txcount),
-	      gasPrice: chain3.intToHex(2000000000),
-  	      gasLimit: chain3.intToHex(2000),
-	      to: '0xf1f5b7a35dff6400af7ab3ea54e4e637059ef909',
-	      value: chain3.intToHex(chain3.toSha(value, 'mc')), 
-	      data: '0x00',
-	      chainId: chainid
-	    }
-		
-	var cmd1 = chain3.signTransaction(rawTx, src["key"]);
-	    
-	chain3.mc.sendRawTransaction(cmd1, function(err, hash) {
-	    if (!err){
-	        console.log("Succeed!: ", hash);
-	        return hash;
-	    }else{
-	        console.log("Chain3 error:", err.message);
-	        return err.message;
-	    }
+var cmd1 = chain3.signTransaction(rawTx, src["key"]);
+
+chain3.mc.sendRawTransaction(cmd1, function(err, hash) {
+    if (!err){
+	console.log("Succeed!: ", hash);
+	return hash;
+    }else{
+	console.log("Chain3 error:", err.message);
+	return err.message;
+    }
 });
-
+```
 
 ### contract_deploy
 
@@ -177,6 +179,31 @@ Deploy a contract through chain3 RPC calls. This example requires install solc
 build a web server to access
 the MOAC network using this API library.
 
+### sign and verify the signatures
+
+Example codes to sign a message using MOAC network and verify the signature.
+
+```js
+  // Connect with the MOAC network
+  chain3.setProvider(new chain3.providers.HttpProvider('http://gateway.moac.io/mainnet'));
+
+  if (!chain3.isConnected()){
+      console.log("Chain3 RPC is not connected!");
+     return;
+  }
+
+  // Hash the message
+  let sha3Msg = chain3.sha3("HELLO MOAC!");
+
+  // Unlock the account 'tacct.addr' before signing
+  let signedData = chain3.mc.sign(tacct.addr, sha3Msg);
+
+  // or you can call the local function to get the same result, but require a private key
+  let signedData = chain3.signMcMessage(sha3Msg,tacct.key);
+
+  // Verify the signature with the message and the address
+  console.log("Verify:", chain3.verifyMcSignature(sha3Msg, signedData, tacct.addr))；
+```
 
 ### Accounts use the following library for generating private key.
 
