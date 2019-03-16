@@ -4,5 +4,6 @@ dist/
 .node*
 .npm/*
 .vscode/*
+ lib/.DS_Store
 .DS_Store
 coverage
