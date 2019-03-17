@@ -1,5 +1,6 @@
 /*
  * Example program to compile a demo contract
+ * and deploy on the tesnet
  * Usage:
  * node contract_deploy.js test.sol
 */
@@ -45,20 +46,22 @@ var tacct = {
   var abi = JSON.parse(ctt.interface);
 
   //Display info abouit the contract
-  //console.log('bytecode', bytecode);
-  console.log('abi', ctt.interface);
+
 
   var chain3 = new Chain3();
   chain3.setProvider(new chain3.providers.HttpProvider('http://localhost:8545'));
-let gasEstimate = chain3.mc.estimateGas({data: bytecode});
-console.log("Gas Estimate on contract:", gasEstimate);
-return;
-//Build the raw transaction
-createContract(tacct,gasEstimate,bytecode);
+  let gasEstimate = chain3.mc.estimateGas({data: bytecode});
+
+  //Build the raw transaction
+  createContract(tacct,gasEstimate,bytecode);
 
 
 /*
- * 
+ * Create a contract by using the input info
+ * and build a valid transaction
+ * Get the account TX count to set the raw TX command nonce value
+ * Requires the private key
+ * Sign the transaction
 */
 function createContract(src, gasValue, inByteCode){
 
@@ -70,8 +73,8 @@ function createContract(src, gasValue, inByteCode){
     var rawTx = {
       from: src.addr,
       nonce: chain3.intToHex(txcount),
-      gasPrice: chain3.intToHex(420000000000),//chain3.intToHex(chain3.mc.gasPrice),//
-      gasLimit: chain3.intToHex(9000000),//chain3.intToHex(gasValue),
+      gasPrice: chain3.intToHex(420000000000),//chain3.intToHex(chain3.mc.gasPrice)
+      gasLimit: chain3.intToHex(gasValue),
       to: '0x',
       value: '0x', 
       data: inByteCode,
@@ -81,13 +84,9 @@ function createContract(src, gasValue, inByteCode){
 
     console.log(rawTx);
 
-    //Get the account TX list to set the raw TX command nonce value
-    //Requires the private key
-    //Sign the transaction
+
 
     var cmd1 = chain3.signTransaction(rawTx, src["key"]);    
-
-    // console.log("\nSend signed TX:\n", cmd1);
 
     chain3.mc.sendRawTransaction(cmd1, function(err, hash) {
         if (!err){
@@ -96,14 +95,11 @@ function createContract(src, gasValue, inByteCode){
             return hash;
         }else{
             console.log("Chain3 error:", err.message);
-            // response.success = false;
-            // response.error = err.message;
             return err.message;
         }
     
     // console.log(response);
     console.log("Get response from MOAC node in the feedback function!")
-        // res.send(response);
     });
 
 }

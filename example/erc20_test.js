@@ -23,10 +23,8 @@ var tokenabi='[{"constant":false,"inputs":[{"name":"newSellPrice","type":"uint25
 var tokenContract=chain3.mc.contract(JSON.parse(tokenabi));
 
 //Testnetwork token, networkid = 101
-// var tokenaddress='0xf2f4eec6c2adfcf780aae828de0b25f86506ffae';
-// Devnetwork, basicToken.sol
-var tokenaddress='0x2e7789CEea3243B8B738D6fC40585EFC2095c93F';
-// 0xe19b0defd6cd0b2cfae2d66c474895b076b0336aff8d4367f043c978b4ead6ef
+var tokenaddress='';
+
 //Load the contract methods 
 var tcalls=tokenContract.at(tokenaddress);
 
@@ -38,11 +36,12 @@ var totalBal = 0;
 var taccts = [{
   "addr": "0x7312F4B8A4457a36827f185325Fd6B66a3f8BB8B", 
   "key": "c75a5f85ef779dcf95c651612efb3c3b9a6dfafb1bb5375905454d9fc8be8a6b"
-  // "key": "0xb8a9c05beeedb25df85f8d641538cbffedf67216048de9c678ee26260eb91952"
 },{
   "addr": "0xD814F2ac2c4cA49b33066582E4e97EBae02F2aB9", 
   "key": ""
 }];
+
+var des = taccts[1].addr;
 
 //Connect the local MOAC node through HTTP 
 chain3.setProvider(new chain3.providers.HttpProvider('http://localhost:8545'));
@@ -77,17 +76,14 @@ if ( chain3.isConnected() ){
     // console.log("  Total balance: " + totalBal);
 
     var src = taccts[0].addr;
-    // var des = "0x3f41bf4e6d18e1ee9ac13a14f8feffaa1ecebb93";
-    var des = "0x54f3FB40df3cf0d234839ae237e8C500faBd71A9";//taccts[1].addr;
+
     console.log("src bal:", src, ":",tcalls.balanceOf(src).toString(10));
     console.log("des bal:", des, ":",tcalls.balanceOf(des).toString(10));
 
     //var strData = '';
     var srcVal = tcalls.balanceOf(src);
     var desVal = tcalls.balanceOf(des);
-    // return;
-    // 1234567889999999899999999999999689869
-    // 1234567890987654321
+
     var amt = 1234567890987654321;//amout in erc20 token "m02"
 
     console.log(" Transfer from:\n", src, "\n to \n", des);
