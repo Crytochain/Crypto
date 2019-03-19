@@ -20,7 +20,7 @@ var chain3 = new Chain3();
 var tokenabi='[{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_tokenId","type":"uint256"}],"name":"approve","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"tokenIndexToOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_tokenId","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"INITIAL_SUPPLY","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"name":"owner","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"count","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_code","type":"string"},{"name":"_quality","type":"string"},{"name":"_weight","type":"string"},{"name":"_owner","type":"address"}],"name":"createToken","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_owner","type":"address"}],"name":"tokensOfOwner","outputs":[{"name":"ownerTokens","type":"uint256[]"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_tokenId","type":"uint256"}],"name":"getCode","outputs":[{"name":"code","type":"string"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"tokenIndexToApproved","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_tokenId","type":"uint256"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_tokenId","type":"uint256"}],"name":"getWeight","outputs":[{"name":"weight","type":"string"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"remaining","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_tokenId","type":"uint256"}],"name":"getQuality","outputs":[{"name":"quality","type":"string"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_token","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":true,"name":"_spender","type":"address"},{"indexed":false,"name":"_token","type":"uint256"}],"name":"Approval","type":"event"}]';
 //testnet 101
 //ERC721 GOLD TOKEN
-var tokenaddress="0x66482421046c9fc3999e2d9016bd3b56c99b68cb";//chen yang's test
+var tokenaddress="0x66482421046c9fc3999e2d9016bd3b56c99b68cb";
 
 // srcAccount: 0x7312f4b8a4457a36827f185325fd6b66a3f8bb8b
 // Contract mined! address: 0xf4d3a1fec69009559c6f669ec47795ea8e468125 
@@ -29,7 +29,7 @@ var tokenaddress="0x66482421046c9fc3999e2d9016bd3b56c99b68cb";//chen yang's test
 // tokenaddress = "0xf4d3a1fec69009559c6f669ec47795ea8e468125";
 
 //remix deploy erc721 with 123 
-tokenaddress = "0xa587c12d623256dddf655bb47b56b022b33a15a0";
+tokenaddress = "";
 
 var tokenContract=chain3.mc.contract(JSON.parse(tokenabi));
 //Load the contract methods 
@@ -69,9 +69,8 @@ if ( chain3.isConnected() ){
   console.log("   supply:", tcalls.INITIAL_SUPPLY());
 
   // console.log("   supply:", tcalls.totalSupply());
-  console.log("   balance:", tcalls.balanceOf("0xD814F2ac2c4cA49b33066582E4e97EBae02F2aB9"));
-  console.log("   balance:", tcalls.balanceOf("0x57d83802a772adf506a89f5021c93a05749e3c6e"));
-   console.log("   owner:", tcalls.ownerOf(1));
+  console.log("   balance:", tcalls.balanceOf(taccts[0]));
+  console.log("   owner:", tcalls.ownerOf(1));
 
 
     //Display all the token balances in the accounts
@@ -148,14 +147,11 @@ console.log("\nSend signed TX:\n", cmd1);
             return hash;
         }else{
             console.log("Chain3 error:", err.message);
-            // response.success = false;
-            // response.error = err.message;
             return err.message;
         }
     
-    // console.log(response);
-    console.log("Get response from MOAC node in the feedback function!")
-        // res.send(response);
+      console.log("Get response from MOAC node in the feedback function!")
+    // res.send(response);
     });
 
 }

@@ -23,6 +23,8 @@ var getErrorStub = function () {
     };
 };
 
+// Init the FakeHttpProvider
+// Constructor
 var FakeHttpProvider = function () {
     this.response = getResponseStub();
     this.error = null;
