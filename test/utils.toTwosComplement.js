@@ -12,7 +12,7 @@ var assert = chai.assert;
 
 var tests = [{
         value: 1,
-        expected: new BigNumber(1).round()
+        expected: new BigNumber(1).integerValue()
     },
     {
         value: '1',
@@ -84,7 +84,7 @@ describe('lib/utils/utils', function () {
     describe('toTwosComplement', function () {
         tests.forEach(function (test) {
             it('printing ' + test.value, function () {
-                assert(test.expected.equals(utils.toTwosComplement(test.value)));
+                assert(test.expected.isEqualTo(utils.toTwosComplement(test.value)));
             });
         });
     });
