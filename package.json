@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "base-x": "*",
-    "bignumber.js": "git+https://github.com/frozeman/bignumber.js-nolookahead.git",
+    "bignumber.js": "^8.1.1",
     "crypto-js": "^3.1.4",
     "eth-lib": "0.2.7",
     "ethereumjs-wallet": "^0.6.2",
@@ -28,7 +28,6 @@
     "xmlhttprequest": "./lib/utils/browser-xhr.js"
   },
   "devDependencies": {
-    "bignumber.js": "^2.0.7",
     "body-parser": "^1.12.2",
     "bower": ">=1.4.1",
     "browserify": ">=10.0",
@@ -77,12 +76,10 @@
     "API"
   ],
   "author": "MOAC Tech",
-  "authors": [
-    {
-      "name": "MOAC Tech Inc.",
-      "email": "support@moac.io",
-      "url": "https://github.com/MOACChain/chain3"
-    }
-  ],
+  "authors": [{
+    "name": "MOAC Tech Inc.",
+    "email": "support@moac.io",
+    "url": "https://github.com/MOACChain/chain3"
+  }],
   "license": "LGPL-3.0"
 }
