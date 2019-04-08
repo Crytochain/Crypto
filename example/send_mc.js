@@ -40,6 +40,9 @@ var taccts = [{
 },{ //from metaMask
     "addr": "0x32d6f648A651C5e458315641863A386914Adb747", 
   "key": "B017F0530A78ACB73BC10A90720AA77F4CBEE7889CBAD5059B3BCF256A310635"
+},{ //test sign error case
+    "addr": "0xe7e52b94e9a82351302260ec39a300e9f00aee4c", 
+  "key": "0x93e44cafebdb047d030d2ad5fb78d61d1ac1fdf9b42b7c15dc3586ef2131cb13"
 }];
 
 /*
@@ -56,8 +59,8 @@ console.log("TX count:", txcount);
       from: src.addr,
       nonce: chain3.intToHex(txcount),
       // For testnet and mainnet, suggest at least 20 gwei
-      gasPrice: chain3.intToHex(chain3.mc.gasPrice),
-      gasLimit: chain3.intToHex(1000),
+      gasPrice: chain3.intToHex(25000000000),
+      gasLimit: chain3.intToHex(21000),
       to: des.addr, 
       value: chain3.intToHex(chain3.toSha(value, 'mc')), 
       shardingFlag: 0,
@@ -101,7 +104,7 @@ function checkBal(inadd){
 //   console.log("Acct[",i,"]:",taccts[i].addr, chain3.mc.getTransactionCount(taccts[i].addr), checkBal(taccts[i].addr));
 
 //Call the function, note the input value is in 'mc'
-var src = taccts[0];
+var src = taccts[3];
 var des = taccts[1];
 
 // console.log(chain3.mc.gasPrice);
