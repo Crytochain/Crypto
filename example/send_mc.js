@@ -104,7 +104,7 @@ function checkBal(inadd){
 //   console.log("Acct[",i,"]:",taccts[i].addr, chain3.mc.getTransactionCount(taccts[i].addr), checkBal(taccts[i].addr));
 
 //Call the function, note the input value is in 'mc'
-var src = taccts[3];
+var src = taccts[0];
 var des = taccts[1];
 
 // console.log(chain3.mc.gasPrice);
