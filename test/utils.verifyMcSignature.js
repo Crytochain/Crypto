@@ -22,7 +22,6 @@ describe('lib/utils/accounts', function () {
         tests.forEach(function (test) {
             it('should verify ' + test.msg + ' and ' + test.signature, function () {
                 assert.strictEqual(chain3.verifyMcSignature(test.msg, test.signature, tacct.addr), true);
-                // chain3.verifyMcSignature(sha3Msg, s2, tacct.addr)
             });
         });
     });

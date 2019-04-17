@@ -1,10 +1,3 @@
-/**
- * Created by danielbruce on 2017-09-25.
- */
-
-/**
- * Created by danielbruce on 2017-09-25.
- */
 var chai = require('chai');
 var utils = require('../lib/utils/utils');
 var BigNumber = require('bignumber.js');
