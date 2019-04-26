@@ -1,5 +1,6 @@
 /*
  * Used for SCS test only
+ * 
 */
 var chai = require('chai');
 var assert = chai.assert;

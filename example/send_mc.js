@@ -33,13 +33,10 @@ console.log("This TX is on network ", networkid);
 //Need to add the addr and private key
 var taccts = [{
   "addr": "0x7312F4B8A4457a36827f185325Fd6B66a3f8BB8B", 
-  "key": "0xc75a5f85ef779dcf95c651612efb3c3b9a6dfafb1bb5375905454d9fc8be8a6b"//put the private key here
+  "key": ""//put the private key here
 },{
   "addr": "0xD814F2ac2c4cA49b33066582E4e97EBae02F2aB9", 
   "key": ""
-},{ //from metaMask
-    "addr": "0x32d6f648A651C5e458315641863A386914Adb747", 
-  "key": "B017F0530A78ACB73BC10A90720AA77F4CBEE7889CBAD5059B3BCF256A310635"
 }];
 
 /*
@@ -51,12 +48,13 @@ function sendTx(src, des, chainid, value){
 var txcount = chain3.mc.getTransactionCount(src["addr"]);
 
 console.log("TX count:", txcount);
+console.log("Gas price:", chain3.mc.gasPrice);
 
     var rawTx = {
       from: src.addr,
       nonce: chain3.intToHex(txcount),
       // For testnet and mainnet, suggest at least 20 gwei
-      gasPrice: chain3.intToHex(chain3.mc.gasPrice),
+      gasPrice: chain3.intToHex(chain3.mc.gasPrice.toString()),
       gasLimit: chain3.intToHex(1000),
       to: des.addr, 
       value: chain3.intToHex(chain3.toSha(value, 'mc')), 

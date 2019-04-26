@@ -36,13 +36,11 @@ describe('chain3.scs', function () {
 
                 // when the input args more than 1 item, need to input separately
                 var result = chain3.scs.getSCSId();
-                // console.log("getNonde:", chain3.scs[method]);
-                console.log("result:", result);
                // then
                 assert.strictEqual(test.formattedResult, result);
             });
             
-            it('async get getSCSId test: ' + index, function (done) {
+            it('async getSCSId test: ' + index, function (done) {
                 
                 // given
                 var provider = new FakeHttpProvider();
