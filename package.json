@@ -1,7 +1,7 @@
 {
   "name": "chain3",
   "namespace": "MOAC",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "MOAC JavaScript API, middleware to talk to a MOAC node over RPC",
   "main": "./index.js",
   "directories": {

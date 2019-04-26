@@ -1,7 +1,8 @@
-# MOAC JavaScript API version 0.1.17.
+# MOAC JavaScript API version 0.1.18.
 
 This is the [MOAC](https://github.com/MOACChain/moac-core) compatible JavaScript API which implements the Generic JSON RPC spec as described in the Chain3.md. It's available on npm as a node module, for bower and component as an embeddable js and as a meteor.js package.
 
+* v0.1.18 Adopt the eth-lib to perform the message signing and verifying to avoid signature verifying error.
 * v0.1.17 Added RLP encode for non-Hex string before signing and verifying to avoid signature verifying error.
 * v0.1.16 Added debug APIs and fixed the unit test error.
 * v0.1.15 Added local MOAC sign and verify signature methods.
