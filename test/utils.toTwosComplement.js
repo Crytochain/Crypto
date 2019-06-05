@@ -12,7 +12,7 @@ var assert = chai.assert;
 
 var tests = [{
         value: 1,
-        expected: new BigNumber(1).integerValue()
+        expected: new BigNumber(1)
     },
     {
         value: '1',

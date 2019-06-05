@@ -1,4 +1,5 @@
-node_modules/*
+scs/
+node_modules/
 package-lock.json
 dist/
 .node*
