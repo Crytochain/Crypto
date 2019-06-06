@@ -12,8 +12,6 @@
 var Chain3 = require('../index.js');
 var chain3 = new Chain3();
 
-
-
 //Set the contract ABI and address to use
 //The ABI info can be obtained using REMIX
 //The address is the contract HASH after deploying the contract. 
@@ -78,28 +76,19 @@ if ( chain3.isConnected() ){
     // console.log("  Total balance: " + totalBal);
 
     var src = taccts[0].addr;
-<<<<<<< HEAD
     // var des = "0x3f41bf4e6d18e1ee9ac13a14f8feffaa1ecebb93";
     var des = "0x54f3FB40df3cf0d234839ae237e8C500faBd71A9";//taccts[1].addr;
     des = "0x6Ee29762855f5cf1f6585c81FA48Fc119AF1c8D3";
-=======
-
->>>>>>> master
     console.log("src bal:", src, ":",tcalls.balanceOf(src).toString(10));
     console.log("des bal:", des, ":",tcalls.balanceOf(des).toString(10));
 return;
     //var strData = '';
     var srcVal = tcalls.balanceOf(src);
     var desVal = tcalls.balanceOf(des);
-<<<<<<< HEAD
     // return;
     // 1234567889999999899999999999999689869
     // 1234567890987654321
     var amt = 123456789987654321;//amout in erc20 token "m02"
-=======
-
-    var amt = 1234567890987654321;//amout in erc20 token "m02"
->>>>>>> master
 
     console.log(" Transfer from:\n", src, "\n to \n", des);
     var tcalldata = tcalls.transfer.getData(des, amt);
