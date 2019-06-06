@@ -91,7 +91,7 @@ var baseabi = ABIs.dappBaseABI;//load in the MicroChain ABI from external file
 var baseAddr = dappBaseAddress;
 
 // Create the MicroChain DappBase Object with abi and address
-var dappBase = mcObject.getDappBase(baseabi, baseAddr);
+var dappBase = mcObject.getDappBase(JSON.parse(baseabi), baseAddr);
 
 console.log("============================================\nTest DappBase functions");
 console.log("dappBase nodeList:", dappBase.getCurNodeList());
