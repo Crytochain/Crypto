@@ -23,8 +23,6 @@
     "sprintf-js": "^1.1.2",
     "underscore": "^1.8.3",
     "utf8": "^2.1.1",
-    "web3-eth-abi": "*",
-    "web3-utils": "*",
     "xhr2": "*",
     "xmlhttprequest": "*"
   },
@@ -80,10 +78,12 @@
     "API"
   ],
   "author": "MOAC Tech",
-  "authors": [{
-    "name": "MOAC Tech Inc.",
-    "email": "support@moac.io",
-    "url": "https://github.com/MOACChain/chain3"
-  }],
+  "authors": [
+    {
+      "name": "MOAC Tech Inc.",
+      "email": "support@moac.io",
+      "url": "https://github.com/MOACChain/chain3"
+    }
+  ],
   "license": "LGPL-3.0"
 }
