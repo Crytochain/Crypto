@@ -53,13 +53,13 @@ if (!chain3.isConnected()){
 // }];
 
 // Display MicroChain Info on the SCS server
-// mclist = chain3.scs.getMicroChainList();
-// console.log("SCS MicroChain Info List:");
-// for(var i = 0; i < mclist.length; i++){
-//       console.log("MicroChain ", mclist[i],",state:", chain3.scs.getDappState(mclist[i])," blockNumber:", chain3.scs.getBlockNumber(mclist[i]));
-//       console.log("MC balance:", chain3.scs.getMicroChainInfo(mclist[i]).balance);
-//       console.log("DAPP list:", chain3.scs.getDappAddrList(mclist[i]));
-// }
+mclist = chain3.scs.getMicroChainList();
+console.log("SCS MicroChain Info List:");
+for(var i = 0; i < mclist.length; i++){
+      console.log("MicroChain ", mclist[i],",state:", chain3.scs.getDappState(mclist[i])," blockNumber:", chain3.scs.getBlockNumber(mclist[i]));
+      console.log("MC balance:", chain3.scs.getMicroChainInfo(mclist[i]).balance);
+      console.log("DAPP list:", chain3.scs.getDappAddrList(mclist[i]));
+}
 //=======================================================
 //Create a MicroChain Object and test functions
 //Load the contract ABI, must be fixed types, otherwise
@@ -78,11 +78,11 @@ var mchain=mcObject.at(microchainAddress);
 
 //Test subchain methods
 console.log("============================================\nTest MicroChain functions");
-console.log("nodeCount:", mchain.nodeCount().toString());
-console.log("Microchain Info:\nBALANCE:", mchain.BALANCE().toString());
-console.log("via Reward:", mchain.viaReward().toString());
-console.log("flush Info:", mchain.getFlushInfo().toString());
-//=======================================================
+// console.log("nodeCount:", mchain.nodeCount().toString());
+// console.log("Microchain Info:\nBALANCE:", mchain.BALANCE().toString());
+// console.log("via Reward:", mchain.viaReward().toString());
+// console.log("flush Info:", mchain.getFlushInfo().toString());
+// //=======================================================
 
 
 //Create a DappBase Object and test functions with it
@@ -91,7 +91,7 @@ var baseabi = ABIs.dappBaseABI;//load in the MicroChain ABI from external file
 var baseAddr = dappBaseAddress;
 
 // Create the MicroChain DappBase Object with abi and address
-var dappBase = mcObject.getDappBase(JSON.parse(baseabi), baseAddr);
+var dappBase = mcObject.getDappBase(microchainAddress, JSON.parse(baseabi), baseAddr);
 
 console.log("============================================\nTest DappBase functions");
 console.log("dappBase nodeList:", dappBase.getCurNodeList());
