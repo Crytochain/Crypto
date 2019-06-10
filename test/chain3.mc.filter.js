@@ -112,8 +112,7 @@ describe('chain3.mc', function () {
                 var args = test.args.slice();
                 args.push(undefined);
                 args.push(function (err) {
-                    // assert.include(errors, err);
-                    assert.deepEqual(errors.InvalidConnection(), err);
+                    assert.include(errors, err);
                     done();
                 });
                 chain3.mc[method].apply(chain3.mc, args);

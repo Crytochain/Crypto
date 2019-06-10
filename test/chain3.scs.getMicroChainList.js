@@ -1,27 +1,32 @@
 var chai = require('chai');
 var assert = chai.assert;
+var BigNumber = require('bignumber.js');
 var Chain3 = require('../index');
 var chain3 = new Chain3();
+// var testMethod = require('./helpers/test.scsMethod.js');
 var FakeHttpProvider = require('./helpers/FakeHttpProvider');
+/*
+ * Return the list of MicroChains on the connected SCS
+ *  
+ * Parameters
+ * None
+ * Returns
+ * `Array` - A list of MicroChain addresses on the SCS.
+ */
+var method = 'getMicroChainList';
 
-var method = 'getSCSId';
-
-// Test object
-// need to have input args, output results and formatted results
 var tests = [{
-    // args: ['0x7312F4B8A4457a36827f185325Fd6B66a3f8BB8B','0xD814F2ac2c4cA49b33066582E4e97EBae02F2aB9'],
-    // formattedArgs: ['0x7312F4B8A4457a36827f185325Fd6B66a3f8BB8B','0xD814F2ac2c4cA49b33066582E4e97EBae02F2aB9'],
-    // args: ['0x47d33b27bb249a2dbab4c0612bf9caf4c1950855','0x000000000000000000000000000000000000013d'],
-    // formattedArgs: ['0x47d33b27bb249a2dbab4c0612bf9caf4c1950855','0x000000000000000000000000000000000000013d'],
-    result: '0x47d33b27bb249a2dbab4c0612bf9caf4c1950855',
-    formattedResult: '0x47d33b27bb249a2dbab4c0612bf9caf4c1950855',
-    call: 'scs_'+ method
+    result: ['0x000000000000000000000000000000000000012d', '0x000000000000000000000000000000000000013d'],
+    formattedResult: ['0x000000000000000000000000000000000000012d', '0x000000000000000000000000000000000000013d'],
+    call: 'scs_' + method
 }];
+
+// testMethod.runTests('scs', method, tests);
 
 describe('chain3.scs', function () {
     describe(method, function () {
         tests.forEach(function (test, index) {
-            it('getSCSId test: ' + index, function () {
+            it('getMicroChainList test: ' + index, function () {
                 
                 // given the result to the FakeProvider
                 var provider = new FakeHttpProvider();
@@ -35,12 +40,12 @@ describe('chain3.scs', function () {
                 });
 
                 // when the input args more than 1 item, need to input separately
-                var result = chain3.scs.getSCSId();
+                var result = chain3.scs.getMicroChainList();
                // then
-                assert.strictEqual(test.formattedResult, result);
+                assert.strictEqual(test.formattedResult[0], result[0]);
             });
             
-            it('async getSCSId test: ' + index, function (done) {
+            it('async getMicroChainList test: ' + index, function (done) {
                 
                 // given
                 var provider = new FakeHttpProvider();
@@ -48,13 +53,15 @@ describe('chain3.scs', function () {
                 provider.injectResult(test.result);
                 provider.injectValidation(function (payload) {
                     assert.equal(payload.jsonrpc, '2.0');
+
                     assert.equal(payload.method, test.call);
                     // assert.deepEqual(payload.params, test.formattedArgs);
                 });
 
                 // when 
-                chain3.scs.getSCSId(function (err, result) {
-                    assert.strictEqual(test.formattedResult, result);
+                chain3.scs.getMicroChainList(function (err, result) {
+                    // assert.strictEqual(test.formattedResult, result);
+                    assert.strictEqual(test.formattedResult[0], result[0]);
                     done();
                 });
                 
@@ -62,4 +69,3 @@ describe('chain3.scs', function () {
         });
     });
 });
-

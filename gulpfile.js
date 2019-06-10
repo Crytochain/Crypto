@@ -93,7 +93,7 @@ gulp.task('light', ['clean'], function () {
         .pipe(exorcist(path.join( DEST, lightDst + '.js.map')))
         .pipe(source(lightDst + '.js'))
         .pipe(gulp.dest( DEST ))
-        .pipe(streamify(uglify()))
+        .pipe(streamify(uglify().on('error',console.error)))
         .pipe(rename(lightDst + '.min.js'))
         .pipe(gulp.dest( DEST ));
 });
@@ -109,7 +109,7 @@ gulp.task('standalone', ['clean'], function () {
         .pipe(exorcist(path.join( DEST, dst + '.js.map')))
         .pipe(source(dst + '.js'))
         .pipe(gulp.dest( DEST ))
-        .pipe(streamify(uglify()))
+        .pipe(streamify(uglify().on('error',console.error)))
         .on('error', function (err) {gutil.log(gutil.colors.red('[Error]'),err.toString());})
         .pipe(rename(dst + '.min.js'))
         .pipe(gulp.dest( DEST ));
@@ -125,9 +125,9 @@ gulp.task('chain3', ['clean'], function () {
         .pipe(exorcist(path.join( DEST, dst + '.js.map')))
         .pipe(source(dst + '.js'))
         .pipe(gulp.dest( DEST ))
-        .pipe(streamify(uglify(ugliyOptions)))
+        .pipe(streamify(uglify(ugliyOptions).on('error',console.error)))
         .pipe(rename(dst + '.min.js'))
-        .pipe(gulp.dest( DEST ));
+        .pipe(gulp.dest( DEST));
 });
 
 gulp.task('watch', function() {
