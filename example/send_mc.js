@@ -37,12 +37,6 @@ var taccts = [{
 },{
   "addr": "0xD814F2ac2c4cA49b33066582E4e97EBae02F2aB9", 
   "key": ""
-},{ //from metaMask
-    "addr": "0x32d6f648A651C5e458315641863A386914Adb747", 
-  "key": "B017F0530A78ACB73BC10A90720AA77F4CBEE7889CBAD5059B3BCF256A310635"
-},{ //test sign error case
-    "addr": "0xe7e52b94e9a82351302260ec39a300e9f00aee4c", 
-  "key": "0x93e44cafebdb047d030d2ad5fb78d61d1ac1fdf9b42b7c15dc3586ef2131cb13"
 }];
 
 /*
@@ -101,15 +95,13 @@ function checkBal(inadd){
 
 
 
-// for (i = 0; i < taccts.length; i ++)
-//   console.log("Acct[",i,"]:",taccts[i].addr, chain3.mc.getTransactionCount(taccts[i].addr), checkBal(taccts[i].addr));
+for (i = 0; i < taccts.length; i ++)
+  console.log("Acct[",i,"]:",taccts[i].addr, chain3.mc.getTransactionCount(taccts[i].addr), checkBal(taccts[i].addr));
 
 //Call the function, note the input value is in 'mc'
 var src = taccts[0];
 var des = taccts[1];
 
-// console.log(chain3.mc.gasPrice);
-// return;
 //Send the vaue in mc
 //1 mc = 1e+18 Sha
 //1 xiao = 1e+9 Xiao

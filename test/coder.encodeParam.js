@@ -12,7 +12,7 @@ describe('lib/solidity/coder', function () {
         };
 
         test({ type: 'int', value: 3.9,             expected: '0000000000000000000000000000000000000000000000000000000000000003'});
-        /*
+        
         test({ type: 'address', value: '0x407d73d8a49eeb85d32cf465507dd71d507100c1',          
                                                     expected: '000000000000000000000000407d73d8a49eeb85d32cf465507dd71d507100c1'});
         test({ type: 'address[2]', value: ['0x407d73d8a49eeb85d32cf465507dd71d507100c1', '0x407d73d8a49eeb85d32cf465507dd71d507100c3'],          
@@ -192,11 +192,11 @@ describe('lib/solidity/coder', function () {
                                                     expected: '0000000000000000000000000000000000000000000000000000000000000020' + 
                                                               '000000000000000000000000000000000000000000000000000000000000003e' + 
                                                               '77656c636f6d6520746f20657468657265756d2e2077656c636f6d6520746f20' + 
-                                                              '657468657265756d2e2077656c636f6d6520746f20657468657265756d2e0000'});*/
+                                                              '657468657265756d2e2077656c636f6d6520746f20657468657265756d2e0000'});
     });
 });
 
-/*
+
 describe('lib/solidity/coder', function () {
     describe('encodeParams', function () {
         var test = function (t) {
@@ -349,5 +349,5 @@ describe('lib/solidity/coder', function () {
 
     });
 });
-*/
+
 
