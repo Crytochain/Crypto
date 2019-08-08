@@ -15,7 +15,7 @@ Requires: a running MicroChain and SCS server with rpc port open
 var Chain3 = require('../index.js');
 var chain3 = new Chain3();
 
-// external file holds test data
+// external file holds MicroChain ABI
 var ABIs = require('./mcABIs');
 
 //local debug network
