@@ -33,7 +33,7 @@ console.log("This TX is on network ", networkid);
 //Need to add the addr and private key
 var taccts = [{
   "addr": "0x7312F4B8A4457a36827f185325Fd6B66a3f8BB8B", 
-  "key": ""//put the private key here
+  "key": "0xc75a5f85ef779dcf95c651612efb3c3b9a6dfafb1bb5375905454d9fc8be8a6b"//put the private key here
 },{
   "addr": "0xD814F2ac2c4cA49b33066582E4e97EBae02F2aB9", 
   "key": ""
@@ -62,11 +62,13 @@ console.log("Gas price:", chain3.mc.gasPrice);
       data: '0x7a68656e6770656e676c69333031363035333932327061793130353130306d6f6163666f723135303030706173',
       chainId: chainid
     }
+
     
     var cmd1 = chain3.signTransaction(rawTx, src["key"]);
 
-    console.log("Sending raw tx to......");
+    console.log("Sending raw tx", rawTx, "\n to......");
     console.log("cmd:", cmd1);
+    // return;
 
     chain3.mc.sendRawTransaction(cmd1, function(err, hash) {
         if (!err){
@@ -110,7 +112,7 @@ var des = taccts[1];
 var networkid = chain3.version.network;
 console.log("This TX is on network ", networkid);
 
-sendTx(src, des, networkid, 0.01);
+sendTx(src, des, networkid, 1);
 
 
 return;
