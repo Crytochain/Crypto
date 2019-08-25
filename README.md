@@ -4,6 +4,7 @@ This is the [MOAC](https://github.com/MOACChain/moac-core) compatible JavaScript
 
 ## Updates
 
+* v0.1.20 Added admin and txpool RPC methods for VNODE, fixed signature error of zero to support microchain DAPP call functions.
 * v0.1.19 Added microchain functions to support microchain DAPP call functions.
 * v0.1.18 Adopt the eth-lib to perform the message signing and verifying to avoid signature verifying error.
 * v0.1.17 Added RLP encode for non-Hex string before signing and verifying to avoid signature verifying error.

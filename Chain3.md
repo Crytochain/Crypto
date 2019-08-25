@@ -143,6 +143,17 @@ balance.plus(21).toString(10); // toString(10) converts it to a number string, b
       * [client](#chain3mcibanclient)
       * [address](#chain3mcibanaddress)
       * [toString](#chain3mcibantostring)
+    * [admin](#chain3admin)
+      * [addPeer](#admin_addPeer)
+      * [datadir](#admin_datadir)
+      * [nodeInfo](#admin_nodeInfo)
+      * [peers](#admin_peers)
+      * [stopRPC](#admin_stopRPC)
+      * [startRPC](#admin_startRPC)
+    * [txpool](#chain3txpool)
+      * [content](#txpool_content)
+      * [status](#txpool_status)
+      * [inspect](#txpool_inspect)
   	* [vnode](#chain3vnode)
 	  	* [vnodeAddress](#chain3vnode_address)
   		* [scsService](#vnode_scsservice)
@@ -158,7 +169,14 @@ balance.plus(21).toString(10); // toString(10) converts it to a number string, b
   	  * [getMicroChainInfo](#scs_getmicrochaininfo)
   	  * [getNonce](#scs_getnonce)
   	  * [getSCSId](#scs_getscsid)
-  	  * [getTransactionReceipt](#scs_gettransactionreceipt)
+  	  * [getTransactionByHash](#scs_gettransactionbyhash)
+      * [getTransactionByNonce](#scs_gettransactionbynonce)      
+      * [getReceiptByHash](#scs_getreceiptbyhash)
+      * [getReceiptByNonce](#scs_getreceiptbynonce)    
+      * [getExchangeByAddress](#scs_getexchangebyaddress)
+      * [getExchangeInfo](#scs_getexchangeinfo)    
+      * [getTxpool](#scs_gettxpool)   
+
 
 ### Usage
 ***
@@ -1995,6 +2013,175 @@ console.log(i.toString()); // 'XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS'
 
 ***
 
+<h4 id="chain3admin_addPeer">chain3.admin.addPeer </h4>
+
+Add a Peer into the current network. Require the VNODE open admin API.
+The addPeer administrative method requests adding a new remote node to the list of tracked static nodes. The node will try to maintain connectivity to these nodes at all times, reconnecting every once in a while if the remote connection goes down.
+
+The method accepts a single argument, the enode URL of the remote peer to start tracking and returns a BOOL indicating whether the peer was accepted for tracking or some error occurred.
+
+```js
+console.log("admin addpeer", chain3.admin.addPeer("enode://9f562d54e0ec6764514592615780838bfe051f1930696c86917013c6304ea92ba4f1371fdedf886da38238d79dc8fe62318b16d85f926351079a815d27a064b4@144.168.43.133:30333")); // true
+
+```
+
+***
+
+<h4 id="chain3admin_datadir">chain3.admin.datadir </h4>
+
+The datadir administrative property can be queried for the absolute path the running VNODE currently uses to store all its databases.
+
+```js
+console.log("admin datadir", chain3.admin.datadir);
+
+//admin datadir /Users/admin/go/src/github.com/testnet
+
+```
+
+***
+
+<h4 id="chain3admin_nodeInfo">chain3.admin.nodeInfo </h4>
+
+The nodeInfo administrative property can be queried for all the information known about the running VNODE at the networking granularity. These include general information about the node itself as a participant of the P2P overlay protocol, as well as specialized information added by each of the running application protocols (e.g. mc, les, shh, bzz).
+
+```js
+console.log("admin nodeInfo", chain3.admin.nodeInfo);
+
+//admin nodeInfo { id: 'a6f486af99679e00ec1a2bf77304e8c7f183987c8138a7c515a08ee42c5bebbda9f01474d43ba7176f891989dbdb78a6cbade67a941e6c2d5a83751039adba36',
+  // name: 'Moac/v1.0.10-rc-89f6ab9c/darwin-amd64/go1.10',
+  // enode: 'enode://a6f486af99679e00ec1a2bf77304e8c7f183987c8138a7c515a08ee42c5bebbda9f01474d43ba7176f891989dbdb78a6cbade67a941e6c2d5a83751039adba36:30336?servicecfgport=:50062&showtopublic=true&beneficialaddress=&ip=',
+  // ip: '71.***.***.***',
+  // ports: { discovery: 30336, listener: 30336 },
+  // listenAddr: '[::]:30336',
+  // protocols: 
+  //  { mc: 
+  //     { network: 106,
+  //       difficulty: 1476985363965,
+  //       genesis: '0x4e2972df43453f5b658656de1f2af40866b6d86b4e11b0c49eb1fc1a854d9796',
+  //       head: '0x941bb3a1c9a8a26e0bc2f747c2a7ea805135e1e995464957aa7e09814a1575d7' } } }
+
+```
+
+***
+
+<h4 id="chain3admin_peers">chain3.admin.peers </h4>
+
+The peers administrative property can be queried for all the information known about the connected remote nodes at the networking granularity. These include general information about the nodes themselves as participants of the P2P overlay protocol, as well as specialized information added by each of the running application protocols (e.g. eth, les, shh, bzz).
+
+```js
+console.log("admin peers", chain3.admin.peers);
+
+//admin peers [ { id: '089554d6929600b9c70bbd6e1c12594697d0aec43127b9b29c6eb96faf06884fd284f56c3de64155d65e540b59a43f4fd07d8802b4b5e95b2922531e6096c2d5',
+  //   name: 'Moac/v1.0.9-rc-c5e47f69/linux-amd64/go1.11',
+  //   caps: [ 'mc/62', 'mc/63' ],
+  //   network: 
+  //    { localAddress: '192.168.1.169:55681',
+  //      remoteAddress: '52.15.143.41:30333' },
+  //   protocols: { mc: [Object] } },
+  // { id: '271c55ef39be9208e6ad75c935061412b39e51dd97a8e4dbba7d358e91132fd7c79ee687228edea3fd9c833b6ce9c365365aa526999956914d7ac81d00576e76',
+  //   name: 'Moac/v1.0.9-rc-c5e47f69/linux-amd64/go1.11',
+  //   caps: [ 'mc/62', 'mc/63' ],
+  //   network: 
+  //    { localAddress: '192.168.1.169:55680',
+  //      remoteAddress: '18.217.180.94:30333' },
+  //   protocols: { mc: [Object] } } ]
+
+```
+
+***
+
+<h4 id="chain3admin_stopRPC">chain3.admin.stopRPC </h4>
+
+The stopRPC administrative method closes the currently open HTTP RPC endpoint. As the node can only have a single HTTP endpoint running, this method takes no parameters, returning a boolean whether the endpoint was closed or not.
+
+```js
+console.log("admin stopRPC", chain3.admin.stopRPC());//true
+
+```
+
+***
+
+<h4 id="chain3admin_startRPC">chain3.admin.startRPC </h4>
+
+The startRPC administrative method starts an HTTP based JSON RPC API webserver to handle client requests. All the parameters are optional:
+
+- host: network interface to open the listener socket on (defaults to "localhost")
+- port: network port to open the listener socket on (defaults to 8545)
+- cors: cross-origin resource sharing header to use (defaults to "")
+- apis: API modules to offer over this interface (defaults to "mc,net,admin")
+
+The method returns a boolean flag specifying whether the HTTP RPC listener was opened or not. Please note, only one HTTP endpoint is allowed to be active at any time.
+
+Though this is a admin method in the console, it's not good to use it through HTTP RPC.
+Since this method cannot be used when RPC port is not open and it cannot be used to override existing port.
+
+```js
+console.log("admin startRPC", chain3.admin.startRPC("127.0.0.1", 8545));
+
+```
+
+***
+
+<h4 id="chain3txpool_content">chain3.txpool.content </h4>
+
+The content inspection property can be queried to list the exact details of all the transactions currently pending for inclusion in the next block(s), as well as the ones that are being scheduled for future execution only.
+
+The result is an object with two fields pending and queued. Each of these fields are associative arrays, in which each entry maps an origin-address to a batch of scheduled transactions. These batches themselves are maps associating nonces with actual transactions.
+
+Please note, there may be multiple transactions associated with the same account and nonce. This can happen if the user broadcast mutliple ones with varying gas allowances (or even complerely different transactions).
+
+```js
+console.log("txpool content", chain3.txpool.content);
+
+```
+
+***
+
+<h4 id="chain3txpool_status">chain3.txpool.status </h4>
+
+The status inspection property can be queried for the number of transactions currently pending for inclusion in the next block(s), as well as the ones that are being scheduled for future execution only.
+
+The result is an object with two fields pending and queued, each of which is a counter representing the number of transactions in that particular state.
+
+```js
+console.log("txpool status", chain3.txpool.status);
+
+// {
+//   pending: 10,
+//   queued: 7
+// }
+
+```
+
+***
+
+<h4 id="chain3txpool_inspect">chain3.txpool.inspect </h4>
+
+The inspect inspection property can be queried to list a textual summary of all the transactions currently pending for inclusion in the next block(s), as well as the ones that are being scheduled for future execution only. This is a method specifically tailored to developers to quickly see the transactions in the pool and find any potential issues.
+
+The result is an object with two fields pending and queued. Each of these fields are associative arrays, in which each entry maps an origin-address to a batch of scheduled transactions. These batches themselves are maps associating nonces with transactions summary strings.
+
+Please note, there may be multiple transactions associated with the same account and nonce. This can happen if the user broadcast mutliple ones with varying gas allowances (or even complerely different transactions).
+
+```js
+console.log("txpool inspect", chain3.txpool.inspect);
+
+{
+  pending: {
+    0x26588a9301b0428d95e6fc3a5024fce8bec12d51: {
+      31813: ["0x3375ee30428b2a71c428afa5e89e427905f95f7e: 0 sha + 500000 × 20000000000 gas"]
+    },......
+  },
+  queued: {
+    ......
+  }
+}
+
+
+```
+
+***
+
 <h4 id="chain3vnode_address">chain3.vnode.address </h4>
 
 
@@ -2141,10 +2328,284 @@ console.log("SCS ID:", chain3.scs.getScsid());
 
 ***
 
-<h4 id="scs_gettransactionreceipt">chain3.scs.getTransactionReceipt </h4>
+<h4 id="scs_getReceiptByHash">chain3.scs.getReceiptByHash </h4>
+
+Returns the receipt of a transaction by transaction hash. Note That the
+receipt is not available for pending transactions.
+
+##### Parameters
+
+1. ``String`` - The MicroChain address. 
+2. ``String`` - The transaction hash.
+
+##### Callback return
+
+
+``Object`` - A transaction receipt object, or ``null`` when no receipt
+was found:
+
+-  ``transactionHash``: ``DATA``, 32 Bytes - hash of the transaction.
+-  ``transactionIndex``: ``QUANTITY`` - integer of the transactions
+   index position in the block.
+-  ``blockHash``: ``DATA``, 32 Bytes - hash of the block where this
+   transaction was in.
+-  ``blockNumber``: ``QUANTITY`` - block number where this transaction
+   was in.
+
+-  ``contractAddress``: ``DATA``, 20 Bytes - The contract address
+   created, if the transaction was a contract creation, otherwise
+   ``null``.
+-  ``logs``: ``Array`` - Array of log objects, which this transaction
+   generated.
+-  ``logsBloom``: ``DATA``, 256 Bytes - Bloom filter for light clients
+   to quickly retrieve related logs.
+- ``failed``: ``Boolean`` - ``true`` if the filter was successfully uninstalled,
+otherwise ``false``.
+-  ``status``: ``QUANTITY`` either ``1`` (success) or ``0`` (failure)
+
+
+##### Example
 
 
 ```js
-txreceipt = chain3. scs.getTransactionReceipt('0xECd1e094Ee13d0B47b72F5c940C17bD0c7630326','0x38c9536cc53920017fb5edeea80d181f52e1d52c75b194c8a08485ebe0ed538e');
-console.log("MicroChain TX Info:", txreceipt);
+
+    // Request
+    var mclist = chain3.scs.getMicroChainList(); //find the MicroChain on the SCS
+    mcAddress = mclist[0]; //locate the 1st MicroChain
+    txhash1="0x688456221f7729f5c2c17006bbe4df163d09bea70c1a1ebb66b9b53ca10563df";
+    console.log("TX Receipt:", chain3.scs.getReceiptByHash(mcAddress, txhash1));
+
+    // Result
+    {
+      "id":101,
+      "jsonrpc": "2.0",
+      "result": {contractAddress: '0x0a674edac2ccd47ae2a3197ea3163aa81087fbd1',
+  failed: false,"logs":[{"address":"0x2328537bc943ab1a89fe94a4b562ee7a7b013634","topics":["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef","0x000000000000000000000000a8863fc8ce3816411378685223c03daae9770ebb","0x0000000000000000000000007312f4b8a4457a36827f185325fd6b66a3f8bb8b"],"data":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGQ=","blockNumber":0,"transactionHash":"0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69","transactionIndex":0,"blockHash":"0x78f092ca81a891ad6c467caa2881d00d8e19c8925ddfd71d793294fbfc5f15fe","logIndex":0,"removed":false}],"logsBloom":"0x00000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000000000008000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000800000000000080000000000000000000000000002000000000000000000000000000000000000080100002000000000000000000000000000000000000000000000000000000000000000000000000000","status":"0x1","transactionHash":"0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69"}
+    }
 ```
+
+***
+
+<h4 id="scs_getReceiptByNonce">chain3.scs.getReceiptByNonce </h4>
+
+Returns the transaction result by address and nonce on the MicroChain. Note That the nonce is the nonce on the MicroChain. This nonce can be checked using scs_getNonce. 
+
+##### Parameters
+
+
+1. ``String`` - The MicroChain address. 
+1. ``String`` - The transaction nonce.
+1. ``QUANTITY`` - The nonce of the transaction.
+
+##### Returns
+
+``Object`` - A transaction receipt object, or null when no receipt was
+found:.
+
+##### Example
+
+```js
+    // Request
+    var mclist = chain3.scs.getMicroChainList(); //find the MicroChain on the SCS
+    mcAddress = mclist[0]; //locate the 1st MicroChain
+    tAddress="0xf6a36118751c50f8932d31d6d092b11cc28f2258";
+    console.log("SCS receipt:", chain3.scs.getReceiptByNonce(mcAddress, tAddress, 0));
+
+    // Result
+    SCS receipt: {contractAddress: '0x0a674edac2ccd47ae2a3197ea3163aa81087fbd1',
+  failed: false,"logs":[{"address":"0x2328537bc943ab1a89fe94a4b562ee7a7b013634","topics":["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef","0x000000000000000000000000a8863fc8ce3816411378685223c03daae9770ebb","0x0000000000000000000000007312f4b8a4457a36827f185325fd6b66a3f8bb8b"],"data":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGQ=","blockNumber":0,"transactionHash":"0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69","transactionIndex":0,"blockHash":"0x78f092ca81a891ad6c467caa2881d00d8e19c8925ddfd71d793294fbfc5f15fe","logIndex":0,"removed":false}],"logsBloom":"0x00000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000000000008000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000800000000000080000000000000000000000000002000000000000000000000000000000000000080100002000000000000000000000000000000000000000000000000000000000000000000000000000","status":"0x1","transactionHash":"0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69"}
+```
+
+***
+
+<h4 id="scs_getReceiptByHash">chain3.scs.getReceiptByHash </h4>
+
+Returns the receipt of a transaction by transaction hash. Note That the
+receipt is not available for pending transactions.
+
+##### Parameters
+
+1. ``String`` - The AppChain/MicroChain address. 
+2. ``String`` - The transaction hash.
+
+##### Returns
+
+
+``Object`` - A transaction object, or null when no transaction was found.
+
+##### Example
+
+```js
+    // Request
+    var mclist = chain3.scs.getMicroChainList(); //find the MicroChain on the SCS
+    mcAddress = mclist[0]; //locate the 1st MicroChain
+    txhash1="0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69";
+    console.log("TX by hash:", chain3.scs.getTransactionByHash(mcAddress, txhash1));
+
+    // Result
+    TX by hash: {
+      "id":101,
+      "jsonrpc": "2.0",
+      "result": {contractAddress: '0x0a674edac2ccd47ae2a3197ea3163aa81087fbd1',
+  failed: false,"logs":[{"address":"0x2328537bc943ab1a89fe94a4b562ee7a7b013634","topics":["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef","0x000000000000000000000000a8863fc8ce3816411378685223c03daae9770ebb","0x0000000000000000000000007312f4b8a4457a36827f185325fd6b66a3f8bb8b"],"data":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGQ=","blockNumber":0,"transactionHash":"0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69","transactionIndex":0,"blockHash":"0x78f092ca81a891ad6c467caa2881d00d8e19c8925ddfd71d793294fbfc5f15fe","logIndex":0,"removed":false}],"logsBloom":"0x00000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000000000008000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000800000000000080000000000000000000000000002000000000000000000000000000000000000080100002000000000000000000000000000000000000000000000000000000000000000000000000000","status":"0x1","transactionHash":"0x67bfaa5a704e77a31d5e7eb866f8c662fa8313a7882d13d0d23e377cd66d2a69"}
+    }
+```
+
+***
+
+<h4 id="scs_getTransactionByNonce">chain3.scs.getTransactionByNonce </h4>
+
+Returns the receipt of a transaction by transaction hash. Note That the
+receipt is not available for pending transactions.
+
+##### Parameters
+
+1. ``String`` - The MicroChain address. 
+2. ``String`` - The transaction nonce.
+3. ``QUANTITY`` - The nonce of the transaction.
+
+##### Returns
+
+
+``Object`` - A transaction receipt object, or null when no receipt was
+found:.
+
+##### Example
+
+```js
+    // Request
+    var mclist = chain3.scs.getMicroChainList(); //find the MicroChain on the SCS
+    mcAddress = mclist[0]; //locate the 1st MicroChain
+    tAddress="0xf6a36118751c50f8932d31d6d092b11cc28f2258";
+    console.log("SCS TX:", chain3.scs.getTransactionByNonce(mcAddress, tAddress, 0));
+
+
+    // Result
+    SCS TX: { blockHash: '0x45ab47bde3a7caa62d80e8c38bef21ada499d52331e574f3a09d4d943aa133fa',
+  blockNumber: 66,
+  from: '0xf6a36118751c50f8932d31d6d092b11cc28f2258', input: '.....', nonce: 0,
+  r: 1.1336589614028917e+77,
+  s: 1.8585853533200337e+76,
+  shardingFlag: 3,
+  to: '0x25b0102b5826efa7ac469782f54f40ffa72154f5',
+  transactionHash: '0x6eb3d33fab53317007927368238aef5bc00d1d1d9bf082930c372e3dabca507c',
+  transactionIndex: 0,
+  v: 248,
+  value: BigNumber { s: 1, e: 21, c: [ 10000000 ] },
+  gas: 0,
+  gasPrice: BigNumber { s: 1, e: 0, c: [ 0 ] } }
+```
+
+***
+
+<h4 id="scs_getExchangeByAddress">chain3.scs.getExchangeByAddress </h4>
+
+Returns the Withdraw/Deposit exchange records between MicroChain and MotherChain for a certain address. This command returns both the ongoing exchanges and processed exchanges. To check all the ongoing exchanges, please use scs_getExchangeInfo. 
+
+##### Parameters
+
+1. `String` - The MicroChain address.
+1. `String` - The address to be checked.
+1. `Int` - Index of Deposit records >= 0.
+1. `Int` - Number of Deposit records extracted.
+1. `Int` - Index of Depositing records >= 0.
+1. `Int` - Number of Depositing records extracted.
+1. `Int` - Index of Withdraw records >= 0.
+1. `Int` - Number of Withdraw records extracted.
+1. `Int` - Index of Withdrawing records >= 0.
+1. `Int` - Number of Withdrawing records extracted.
+
+##### Returns
+
+
+``Object`` - A JSON format object contains the token exchange info.
+
+##### Example
+
+```js
+    // Request
+    var mclist = chain3.scs.getMicroChainList(); //find the MicroChain on the SCS
+    mcAddress = mclist[0]; //locate the 1st MicroChain
+    tAddress="0xf6a36118751c50f8932d31d6d092b11cc28f2258";
+    console.log("SCS token address exchange:", chain3.scs.getExchangeByAddress(mcAddress, tAddress));
+
+    // Result
+    SCS token address exchange: { DepositRecordCount: 0,
+    DepositRecords: null,
+    DepositingRecordCount: 0,
+    DepositingRecords: null,
+    WithdrawRecordCount: 0,
+    WithdrawRecords: null,
+    WithdrawingRecordCount: 0,
+    WithdrawingRecords: null,
+    microchain: '0x25b0102b5826efa7ac469782f54f40ffa72154f5',
+    sender: '0xf6a36118751c50f8932d31d6d092b11cc28f2258' }
+```
+
+***
+
+<h4 id="scs_getExchangeInfo">chain3.scs.getExchangeInfo </h4>
+
+Returns the Withdraw/Deposit exchange records between MicroChain and MotherChain for a certain address. This command returns both the ongoing exchanges and processed exchanges. To check all the ongoing exchanges, please use scs_getExchangeInfo. 
+
+##### Parameters
+
+1. `String` - The MicroChain address.
+1. `String` - The transaction hash.
+1. `Int` - Index of Depositing records >= 0.
+1. `Int` - Number of Depositing records extracted.
+1. `Int` - Index of Withdrawing records >= 0.
+1. `Int` - Number of Withdrawing records extracted.
+
+##### Returns
+
+
+``Object`` - A JSON object contains the token exchange info.
+
+##### Example
+
+```js
+    // Request
+    var mclist = chain3.scs.getMicroChainList(); //find the MicroChain on the SCS
+    mcAddress = mclist[0]; //locate the 1st MicroChain
+    console.log("SCS token exchanging info:", chain3.scs.getExchangeInfo(mcAddress));
+
+    // Result
+    SCS token exchanging info: { DepositingRecordCount: 0,
+      DepositingRecords: null,
+      WithdrawingRecordCount: 0,
+      WithdrawingRecords: null,
+      microchain: '0x25b0102b5826efa7ac469782f54f40ffa72154f5',
+      scsid: '0xecd1e094ee13d0b47b72f5c940c17bd0c7630326' }
+```
+
+***
+
+<h4 id="scs_getTxpool">chain3.scs.getTxpool </h4>
+
+Returns the ongoing transactions in the MicroChain. 
+
+##### Parameters
+
+1. `String` - The MicroChain address.
+
+##### Returns
+
+``Object`` - A JSON format object contains two fields pending and queued. Each of these fields are associative arrays, in which each entry maps an origin-address to a batch of scheduled transactions. These batches themselves are maps associating nonces with actual transactions.
+
+##### Example
+
+```js
+    // Request
+    var mclist = chain3.scs.getMicroChainList(); //find the MicroChain on the SCS
+    mcAddress = mclist[0]; //locate the 1st MicroChain
+    console.log("SCS TXpool:", chain3.scs.getTxpool(mcAddress));
+
+    // Result
+
+    SCS TXpool: {"pending":{},"queued":{}}
+```
+
+***
+
+<h4 id="scs_getReceiptByHash">chain3.scs.getReceiptByHash </h4>
