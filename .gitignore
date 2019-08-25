@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-scs/
-=======
->>>>>>> master
 node_modules/
 package-lock.json
 dist/
