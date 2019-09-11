@@ -1,6 +1,6 @@
 {
   "name": "chain3",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "description": "MOAC JavaScript API",
   "main": "dist/chain3.js",
   "dependencies": {
