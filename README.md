@@ -2,6 +2,16 @@
 
 This is the [MOAC](https://github.com/MOACChain/moac-core) compatible JavaScript API which implements the Generic JSON RPC spec as described in the Chain3.md. It's available on npm as a node module, for bower and component as an embeddable js and as a meteor.js package.
 
+chain3 is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+chain3 is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+LICENSE file for more details.
+
 ## Updates
 
 * v0.1.21 Fixed the previous bug with lodash.
@@ -217,7 +227,6 @@ Example codes to sign a message using MOAC network and verify the signature.
 
 [browserify-cryptojs](https://github.com/fahad19/crypto-js/) v0.3.1
 
-
-
-
+[repo]: https://github.com/MOACChain/chain3
+[npm-url]: https://npmjs.org/package/chain3
 
