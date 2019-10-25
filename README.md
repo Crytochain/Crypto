@@ -1,10 +1,10 @@
-# MOAC INE JavaScript API version 0.1.20.1
+# MOAC INE JavaScript API version 0.1.21
 
 This is the [MOAC](https://github.com/MOACChain/moac-core) compatible JavaScript API which implements the Generic JSON RPC spec as described in the Chain3.md. And in this version, it has special unit convertion for INE. It's available on npm as a node module, for bower and component as an embeddable js and as a meteor.js package.
 
 ## Updates
 
-* v0.1.20.1 Added special unit support for INE
+* v0.1.21 Added special unit support for INE
 * v0.1.20 Added admin and txpool RPC methods for VNODE, fixed signature error of zero to support microchain DAPP call functions.
 * v0.1.19 Added microchain functions to support microchain DAPP call functions.
 * v0.1.18 Adopt the eth-lib to perform the message signing and verifying to avoid signature verifying error.
@@ -37,7 +37,7 @@ More information is in Chain3.md or [MOAC wiki](https://github.com/MOACChain/moa
 ### Node.js
 
 ```bash
-npm install chain3@0.1.20.1
+npm install chain3@0.1.21
 ```
 
 * Include `chain3.min.js` in your html file. (not required for the meteor package)
