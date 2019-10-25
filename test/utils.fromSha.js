@@ -17,6 +17,12 @@ describe('lib/utils/utils', function () {
             assert.equal(utils.fromSha(1000000000000000000, 'mmc'), '0.000001');
             assert.equal(utils.fromSha(1000000000000000000, 'gmc'), '0.000000001');
             assert.equal(utils.fromSha(1000000000000000000, 'tmc'), '0.000000000001');
+
+            assert.equal(utils.fromSha(1000000000000000000, 'ine'),  '1');
+            assert.equal(utils.fromSha(1000000000000000000, 'kine'), '0.001');
+            assert.equal(utils.fromSha(1000000000000000000, 'mine'), '0.000001');
+            assert.equal(utils.fromSha(1000000000000000000, 'gine'), '0.000000001');
+            assert.equal(utils.fromSha(1000000000000000000, 'tine'), '0.000000000001');
         });
     });
 });

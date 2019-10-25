@@ -60,6 +60,17 @@ describe('lib/utils/utils', function () {
             assert.equal(utils.toSha(1, 'milli'),    utils.toSha(1, 'millimc'));
             assert.equal(utils.toSha(1, 'milli'),    utils.toSha(1000, 'micro'));
 
+            assert.equal(utils.toSha(1, 'noine'),    '0');
+            assert.equal(utils.toSha(1, 'femtoine'),   '1000');
+            assert.equal(utils.toSha(1, 'picoine'),   '1000000');
+            assert.equal(utils.toSha(1, 'nanoine'),   '1000000000');
+            assert.equal(utils.toSha(1, 'microine'),  '1000000000000');
+            assert.equal(utils.toSha(1, 'ine'),  '1000000000000000000');
+            assert.equal(utils.toSha(1, 'kine'), '1000000000000000000000');
+            assert.equal(utils.toSha(1, 'mine'), '1000000000000000000000000');
+            assert.equal(utils.toSha(1, 'gine'), '1000000000000000000000000000');
+            assert.equal(utils.toSha(1, 'tine'), '1000000000000000000000000000000');
+
             assert.throws(function () {utils.toSha(1, 'sha1');}, Error);
         });
     });
