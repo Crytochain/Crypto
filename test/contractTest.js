@@ -629,9 +629,9 @@ describe('contract', function () {
             });
 
             var contract = chain3.mc.contract(desc).at(address);
-
             contract.testArr([3], function (err, result) {
-                assert.deepEqual(new BigNumber(5), result);
+                 assert.equal(new BigNumber(5).isEqualTo(result),true);
+                
                 done();
             });
 
