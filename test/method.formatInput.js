@@ -1,17 +1,18 @@
 var chai = require('chai');
 var assert = chai.assert;
-var Method = require('../lib/chain3/method');
+var Method = require('../packages/chain3-core-method');
 
-describe('lib/chain3/method', function () {
+describe('lib/web3/method', function () {
     describe('formatInput', function () {
         it('should format plain input', function () {
-            
+
             // given
             var star = function (arg) {
                 return arg + '*';
             };
-            
+
             var method = new Method({
+                name: 'something', call: 'mc_something',
                 inputFormatter: [star, star, star]
             });
             var args = ['1','2','3'];
@@ -27,12 +28,12 @@ describe('lib/chain3/method', function () {
         it('should do nothing if there is no formatter', function () {
 
             // given
-            var method = new Method({});
+            var method = new Method({name: 'something', call: 'mc_something'});
             var args = [1,2,3];
 
             // when
             var result = method.formatInput(args);
-            
+
             // then
             assert.deepEqual(result, args);
         });

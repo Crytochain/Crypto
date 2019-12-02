@@ -1,5 +1,6 @@
 var chai = require('chai');
-var utils = require('../lib/utils/utils.js');
+var utils = require('../packages/chain3-utils');
+
 var assert = chai.assert;
 
 var tests = [
@@ -12,8 +13,8 @@ var tests = [
     { value: '0xE247A45c287191d435A8a5D72A7C8dc030451E9F', is: true },
     { value: '0xE247a45c287191d435A8a5D72A7C8dc030451E9F', is: false },
     { value: '0xe247a45c287191d435a8a5d72a7c8dc030451e9f', is: true },
-    { value: '0XE247A45C287191D435A8A5D72A7C8DC030451E9F', is: false },
-    { value: '0xE247A45C287191D435A8A5D72A7C8DC030451E9F', is: true }
+    { value: '0xE247A45C287191D435A8A5D72A7C8DC030451E9F', is: true },
+    { value: '0XE247A45C287191D435A8A5D72A7C8DC030451E9F', is: true }
 ];
 
 describe('lib/utils/utils', function () {

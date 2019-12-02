@@ -1,12 +1,12 @@
 var chai = require('chai');
-var Iban = require('../lib/chain3/iban.js');
 var assert = chai.assert;
+var Iban = require('web3-eth-iban');
 
 var tests = [
-    { institution: 'XREG', identifier: 'GAVOFYORK', expected: 'XE66MOACXREGGAVOFYORK'}
+    { institution: 'XREG', identifier: 'GAVOFYORK', expected: 'XE81ETHXREGGAVOFYORK'}
 ];
 
-describe('lib/chain3/iban', function () {
+describe('lib/web3/iban', function () {
     describe('createIndirect', function () {
         tests.forEach(function (test) {
             it('shoud create indirect iban: ' +  test.expected, function () {
@@ -15,7 +15,7 @@ describe('lib/chain3/iban', function () {
                     identifier:  test.identifier
                 }), new Iban(test.expected));
             });
-        });   
+        });
     });
 });
 

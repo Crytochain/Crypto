@@ -1,7 +1,6 @@
 var chai = require('chai');
 var assert = chai.assert;
-var SolidityEvent = require('../lib/chain3/event');
-var Chain3 = require('../index');
+var Mc = require('../packages/chain3-mc');
 
 
 var address = '0x1234567890123456789012345678901234567890';
@@ -10,9 +9,9 @@ var signature = '0xffff';
 var tests = [{
     abi: {
         name: 'event1',
-        inputs: []
+        inputs: [],
+        signature: signature
     },
-    indexed: {},
     options: {},
     expected: {
         address: address,
@@ -27,12 +26,14 @@ var tests = [{
             type: 'int',
             name: 'a',
             indexed: true
-        }]
+        }],
+        signature: signature
     },
-    indexed: {
-        a: 16
+    options: {
+        filter: {
+            a: 16
+        },
     },
-    options: {},
     expected: {
         address: address,
         topics: [
@@ -59,12 +60,14 @@ var tests = [{
             type: 'int',
             name: 'd',
             indexed: true
-        }]
+        }],
+        signature: signature
     },
-    indexed: {
-        b: 4
+    options: {
+        filter: {
+            b: 4
+        }
     },
-    options: {},
     expected: {
         address: address,
         topics: [
@@ -85,13 +88,15 @@ var tests = [{
             type: 'int',
             name: 'b',
             indexed: true
-        }]
+        }],
+        signature: signature
     },
-    indexed: {
-        a: [16, 1],
-        b: 2
+    options: {
+        filter: {
+            a: [16, 1],
+            b: 2
+        }
     },
-    options: {},
     expected: {
         address: address,
         topics: [
@@ -107,12 +112,14 @@ var tests = [{
             type: 'int',
             name: 'a',
             indexed: true
-        }]
+        }],
+        signature: signature
     },
-    indexed: {
-        a: null
+    options: {
+        filter: {
+            a: null
+        }
     },
-    options: {},
     expected: {
         address: address,
         topics: [
@@ -127,12 +134,13 @@ var tests = [{
             type: 'int',
             name: 'a',
             indexed: true
-        }]
-    },
-    indexed: {
-        a: 1
+        }],
+        signature: signature
     },
     options: {
+        filter: {
+            a: 1
+        },
         fromBlock: 'latest',
         toBlock: 'pending'
     },
@@ -153,12 +161,13 @@ var tests = [{
             type: 'int',
             name: 'a',
             indexed: true
-        }]
-    },
-    indexed: {
-        a: 1
+        }],
+        signature: signature
     },
     options: {
+        filter: {
+            a: 1
+        },
         fromBlock: 4,
         toBlock: 10
     },
@@ -179,12 +188,14 @@ var tests = [{
             name: 'a',
             indexed: true
         }],
-        anonymous: true
+        anonymous: true,
+        signature: signature
     },
-    indexed: {
-        a: 1
+    options: {
+        filter: {
+            a: 1
+        }
     },
-    options: {},
     expected: {
         address: address,
         topics: [
@@ -203,12 +214,14 @@ var tests = [{
             name: 'b',
             indexed: true
         }],
-        anonymous: true
+        anonymous: true,
+        signature: signature
     },
-    indexed: {
-        b: 1
+    options: {
+        filter: {
+            b: 1
+        }
     },
-    options: {},
     expected: {
         address: address,
         topics: [
@@ -222,13 +235,11 @@ describe('lib/chain3/event', function () {
     describe('encode', function () {
         tests.forEach(function (test, index) {
             it('test no: ' + index, function () {
-                var chain3 = new Chain3();
-                var event = new SolidityEvent(chain3, test.abi, address);
-                event.signature = function () { // inject signature
-                    return signature.slice(2);
-                };
+                var mc = new Mc();
+                var contract = new mc.Contract([test.abi], address);
 
-                var result = event.encode(test.indexed, test.options);
+
+                var result = contract._encodeEventABI(test.abi, test.options);
                 assert.deepEqual(result, test.expected);
             });
         });

@@ -2,16 +2,6 @@
 
 'use strict';
 
-/*
- * Note:
- * met an issue that using ES6 can cause trouble with uglify
- * events.js:160
-      throw er; // Unhandled 'error' event
-      ^
-GulpUglifyError: unable to minify JavaScript
-Need change ES6 to ES5 format, remove 'let' to 'var'
- *  
-*/
 var version = require('./lib/version.json');
 var path = require('path');
 
@@ -19,16 +9,13 @@ var del = require('del');
 var gulp = require('gulp');
 var browserify = require('browserify');
 var jshint = require('gulp-jshint');
-var uglify = require('gulp-uglify');//Using this may cause an error when using ES6 
+var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var source = require('vinyl-source-stream');
 var exorcist = require('exorcist');
 var bower = require('bower');
 var streamify = require('gulp-streamify');
 var replace = require('gulp-replace');
-
-//To debug any issues with gulp
-var gutil = require('gulp-util');
 
 var DEST = path.join(__dirname, 'dist/');
 var src = 'index';
@@ -40,16 +27,6 @@ var browserifyOptions = {
     insert_global_vars: false, // jshint ignore:line
     detectGlobals: false,
     bundleExternal: true
-};
-
-var ugliyOptions = {
-    compress: {
-        dead_code: true,  // jshint ignore:line
-        drop_debugger: true,  // jshint ignore:line
-        global_defs: {      // jshint ignore:line
-            "DEBUG": false      // matters for some libraries
-        }
-    }
 };
 
 gulp.task('version', function(){
@@ -93,7 +70,7 @@ gulp.task('light', ['clean'], function () {
         .pipe(exorcist(path.join( DEST, lightDst + '.js.map')))
         .pipe(source(lightDst + '.js'))
         .pipe(gulp.dest( DEST ))
-        .pipe(streamify(uglify().on('error',console.error)))
+        .pipe(streamify(uglify()))
         .pipe(rename(lightDst + '.min.js'))
         .pipe(gulp.dest( DEST ));
 });
@@ -109,8 +86,7 @@ gulp.task('standalone', ['clean'], function () {
         .pipe(exorcist(path.join( DEST, dst + '.js.map')))
         .pipe(source(dst + '.js'))
         .pipe(gulp.dest( DEST ))
-        .pipe(streamify(uglify().on('error',console.error)))
-        .on('error', function (err) {gutil.log(gutil.colors.red('[Error]'),err.toString());})
+        .pipe(streamify(uglify()))
         .pipe(rename(dst + '.min.js'))
         .pipe(gulp.dest( DEST ));
 });
@@ -125,9 +101,9 @@ gulp.task('chain3', ['clean'], function () {
         .pipe(exorcist(path.join( DEST, dst + '.js.map')))
         .pipe(source(dst + '.js'))
         .pipe(gulp.dest( DEST ))
-        .pipe(streamify(uglify(ugliyOptions).on('error',console.error)))
+        .pipe(streamify(uglify()))
         .pipe(rename(dst + '.min.js'))
-        .pipe(gulp.dest( DEST));
+        .pipe(gulp.dest( DEST ));
 });
 
 gulp.task('watch', function() {

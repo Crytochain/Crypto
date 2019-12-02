@@ -1,16 +1,17 @@
 var chai = require('chai');
 var assert = chai.assert;
-var formatters = require('../lib/chain3/formatters');
+var formatters = require('web3-core-helpers/src/formatters.js');
 
 var tests = [
+    { value: 'genesis', expected: '0x0' },
     { value: 'latest', expected: 'latest' },
     { value: 'pending', expected: 'pending' },
-    { value: 'earliest', expected: 'earliest' },
+    { value: 'earliest', expected: '0x0' },
     { value: 1, expected: '0x1' },
     { value: '0x1', expected: '0x1' }
 ];
 
-describe('lib/chain3/formatters', function () {
+describe('lib/web3/formatters', function () {
     describe('inputDefaultBlockNumberFormatter', function () {
         tests.forEach(function (test) {
             it('should turn ' + test.value + ' to ' + test.expected, function () {
