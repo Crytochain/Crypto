@@ -1,38 +1,16 @@
-# MOAC JavaScript API version 0.1.2.
-Modified from ethereum:web3.js 0.20.0
+# MOAC JavaScript API version 1.0.0.
+This documentation is under construction and documents the 1.0.x alpha versions of chain3.js. 
+The current stable version of chain3.js is 0.1.22 and should get preferred for production use cases.
 
-var Chain3 = require('chain3');
+//MOAC chain3 lib
+var Chain3 = require('../packages/chain3');
 
 var chain3 = new Chain3();
 
-This is the MOAC compatible JavaScript API which implements the Generic JSON RPC spec as described in the Chain3.md. It's available on npm as a node module, for bower and component as an embeddable js and as a meteor.js package.
-
+This is the MOAC compatible JavaScript API which implements the Generic JSON RPC spec as described in the Chain3.md. 
 
 Some of the methods require running a local MOAC node to use this library.
 
-
-## Installation
-
-### Node.js
-
-```bash
-npm install chain3
-```
-
-### As Browser module
-Bower
-
-```bash
-bower install chain3
-```
-
-Component
-
-```bash
-component install moac/chain3.js
-```
-
-* Include `chain3.min.js` in your html file. (not required for the meteor package)
 
 ## Usage
 Use the `chain3` object directly from global namespace:
@@ -64,7 +42,7 @@ There you go, now you can use it:
 var coinbase = chain3.mc.coinbase;
 var balance = chain3.mc.getBalance(coinbase);
 ```
-More examples are under the example directory
+More examples are under the examples directory
 
 ## Contribute!
 
@@ -100,19 +78,6 @@ Test a singe function.
 ```bash
 mocha test/chain3.mc.coinbase.js 
 ```
-
-## Some extras
-
-### A simple express server
-The server directory contains the example codes to build a web server to access
-the MOAC network using this API library.
-
-
-### Accounts use the following library for generating private key.
-
-[browserify-cryptojs](https://github.com/fahad19/crypto-js/) v0.3.1
-
-
 
 
 
