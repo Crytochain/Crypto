@@ -1,7 +1,7 @@
 {
   "name": "chain3",
   "version": "0.1.22",
-  "description": "MOAC JavaScript API",
+  "description": "LBR JavaScript API",
   "main": "dist/chain3.js",
   "dependencies": {
     "bignumber.js": ">=2.0.0",
@@ -9,22 +9,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/MOACChain/chain3.git"
+    "url": "https://github.com/LBRChain/chain3.git"
   },
-  "homepage": "https://github.com/MOACChain/chain3",
+  "homepage": "https://github.com/LBRChain/chain3",
   "bugs": {
-    "url": "https://github.com/MOACChain/chain3/issues"
+    "url": "https://github.com/LBRChain/chain3/issues"
   },
   "keywords": [
-    "MOAC",
+    "LBR",
     "javascript",
     "API"
   ],
   "authors": [
     {
-      "name": "MOAC lab",
-      "email": "info@moac.io",
-      "homepage": "https://github.com/MOACChain"
+      "name": "LBR lab",
+      "email": "info@LBR.io",
+      "homepage": "https://github.com/LBRChain"
     }
   ],
   "license": "LGPL-3.0",

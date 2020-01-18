@@ -1,8 +1,8 @@
 {
   "name": "chain3",
-  "namespace": "MOAC",
+  "namespace": "LBR",
   "version": "0.1.22",
-  "description": "MOAC JavaScript API, middleware to talk to a MOAC node over RPC",
+  "description": "LBR JavaScript API, middleware to talk to a LBR node over RPC",
   "main": "./index.js",
   "directories": {
     "lib": "./lib",
@@ -63,23 +63,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/MOACChain/chain3/releases"
+    "url": "https://github.com/LBRChain/chain3/releases"
   },
-  "homepage": "https://github.com/MOACChain/chain3",
+  "homepage": "https://github.com/LBRChain/chain3",
   "bugs": {
-    "url": "https://github.com/MOACChain/chain3/issues"
+    "url": "https://github.com/LBRChain/chain3/issues"
   },
   "keywords": [
-    "MOAC",
+    "LBR",
     "javascript",
     "API"
   ],
-  "author": "MOAC Tech",
+  "author": "LBR Tech",
   "authors": [
     {
-      "name": "MOAC Tech Inc.",
-      "email": "support@moac.io",
-      "url": "https://github.com/MOACChain/chain3"
+      "name": "LBR Tech Inc.",
+      "email": "support@LBR.io",
+      "url": "https://github.com/LBRChain/chain3"
     }
   ],
   "license": "LGPL-3.0"

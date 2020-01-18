@@ -4,12 +4,12 @@ name: Javascript API
 ---
 
 # Chain3 JavaScript API
-MOAC JavaScript API was built for MOAC chain. It was developed based on the Ethereum web3.js API routines and made some methods compatiable with the web3.js methods so the users can easily move their Ðapp to MOAC chain. In
-Chain3 also supported additional methods for MOAC platform, such as VNODE and SCS methods.
+LBR JavaScript API was built for LBR chain. It was developed based on the Ethereum web3.js API routines and made some methods compatiable with the web3.js methods so the users can easily move their Ðapp to LBR chain. In
+Chain3 also supported additional methods for LBR platform, such as VNODE and SCS methods.
 
-To make a Ðapp work on MOAC network, user should use the `chain3` object provided by the [chain3.js library](https://github.com/MOACChain/chain3). It communicates to a local MOAC  node through [JSON RPC](https://github.com/MOACChain/moac-core/wiki/JSON-RPC). chain3.js works with any MOAC VNODE and SCS, which exposes an RPC layer.
+To make a Ðapp work on LBR network, user should use the `chain3` object provided by the [chain3.js library](https://github.com/LBRChain/chain3). It communicates to a local LBR  node through [JSON RPC](https://github.com/LBRChain/LBR-core/wiki/JSON-RPC). chain3.js works with any LBR VNODE and SCS, which exposes an RPC layer.
 
-`chain3` contains the `mc` object - `chain3.mc` (for specifically MOAC Mother blockchain interactions), and the `scs` object - `chain3.scs` (for MicroChain interactions). Over time we'll introduce other objects for each of the other chain3 protocols. Working [examples can be found here](https://github.com/MOACChain/chain3/tree/master/example).
+`chain3` contains the `mc` object - `chain3.mc` (for specifically LBR Mother blockchain interactions), and the `scs` object - `chain3.scs` (for MicroChain interactions). Over time we'll introduce other objects for each of the other chain3 protocols. Working [examples can be found here](https://github.com/LBRChain/chain3/tree/master/example).
 
 
 ## Using callbacks
@@ -76,7 +76,7 @@ balance.plus(21).toString(10); // toString(10) converts it to a number string, b
      * [api](#chain3versionapi)
      * [node](#chain3versionnode)
      * [network](#chain3versionnetwork)
-     * [moac](#chain3versionmoac)
+     * [LBR](#chain3versionLBR)
   * [isConnected()](####chain3isconnected)
   * [setProvider(provider)](#chain3setprovider)
   * [currentProvider](#chain3currentprovider)
@@ -205,7 +205,7 @@ chain3.version.getApi(callback(error, result){ ... })
 
 ##### Returns
 
-`String` - The moac js api version.
+`String` - The LBR js api version.
 
 ##### Example
 
@@ -231,7 +231,7 @@ console.log(version); // "0.2.0"
 
 ```js
 var version = chain3.version.node;
-console.log(version); // "Moac/v0.1.0-develop/darwin-amd64/go1.9"
+console.log(version); // "LBR/v0.1.0-develop/darwin-amd64/go1.9"
 ```
 
 ***
@@ -257,22 +257,22 @@ console.log(version); // 54
 
 ***
 
-<h4 id="chain3versionnetmoac">chain3.version.moac </h4>
+<h4 id="chain3versionnetLBR">chain3.version.LBR </h4>
 
 
-    chain3.version.moac
+    chain3.version.LBR
     // or async
-    chain3.version.getMoac(callback(error, result){ ... })
+    chain3.version.getLBR(callback(error, result){ ... })
 
 
 ##### Returns
 
-`String` - The moac protocol version.
+`String` - The LBR protocol version.
 
 ##### Example
 
 ```js
-var version = chain3.version.moac;
+var version = chain3.version.LBR;
 console.log(version); // 0x3f
 ```
 
@@ -325,7 +325,7 @@ none
 ##### Example
 
 ```js
-chain3.setProvider(new chain3.providers.HttpProvider('http://localhost:8545')); // 8545 for go/moac
+chain3.setProvider(new chain3.providers.HttpProvider('http://localhost:8545')); // 8545 for go/LBR
 ```
 
 ***
@@ -334,7 +334,7 @@ chain3.setProvider(new chain3.providers.HttpProvider('http://localhost:8545')); 
 
     chain3.currentProvider
 
-Will contain the current provider, if one is set. This can be used to check if moac etc. set already a provider.
+Will contain the current provider, if one is set. This can be used to check if LBR etc. set already a provider.
 
 
 ##### Returns
@@ -344,7 +344,7 @@ Will contain the current provider, if one is set. This can be used to check if m
 ##### Example
 
 ```js
-// Check if moac etc. already set a provider
+// Check if LBR etc. already set a provider
 if(!chain3.currentProvider)
     chain3.setProvider(new chain3.providers.HttpProvider("http://localhost:8545"));
 
@@ -391,7 +391,7 @@ chain3.reset();
 ##### Example
 
 ```js
-var str = chain3.sha3("Some ASCII string to be hashed in MOAC");
+var str = chain3.sha3("Some ASCII string to be hashed in LBR");
 console.log(str); // "0xbfa24877cd68e6734710402a2af3e29cf18bd6d2f304aa528ffa3a32fa7652d2"
 
 ```
@@ -415,10 +415,10 @@ Converts any value into HEX.
 ##### Example
 
 ```js
-var str = chain3.toHex(moac network);
+var str = chain3.toHex(LBR network);
 console.log(str); // '0x6d6f6163206e6574776f726b'
 
-console.log(chain3.toHex({moac: 'test'}));
+console.log(chain3.toHex({LBR: 'test'}));
 //'0x7b226d6f6163223a2274657374227d'
 ```
 
@@ -444,7 +444,7 @@ Converts a HEX string into a ASCII string.
 
 ```js
 var str = chain3.toAscii("0x0x6d6f6163206e6574776f726b");
-console.log(str); // "moac network"
+console.log(str); // "LBR network"
 ```
 
 ***
@@ -466,7 +466,7 @@ Converts any ASCII string to a HEX string.
 ##### Example
 
 ```js
-var str = chain3.fromAscii('moac network');
+var str = chain3.fromAscii('LBR network');
 console.log(str); // "0x0x6d6f6163206e6574776f726b"
 ```
 
@@ -548,7 +548,7 @@ console.log(value); // "0x15"
 
     chain3.fromSha(number, unit)
 
-Converts a number of sha into the following moac units:
+Converts a number of sha into the following LBR units:
 
 - `ksha`/`femtomc`
 - `msha`/`picomc`
@@ -564,7 +564,7 @@ Converts a number of sha into the following moac units:
 ##### Parameters
 
 1. `Number|String|BigNumber` - A number or BigNumber instance.
-2. `String` - One of the above moac units.
+2. `String` - One of the above LBR units.
 
 
 ##### Returns
@@ -584,7 +584,7 @@ console.log(value); // "21000"
 
     chain3.toSha(number, unit)
 
-Converts a moac unit into sha. Possible units are:
+Converts a LBR unit into sha. Possible units are:
 
 - `ksha`/`femtomc`
 - `msha`/`picomc`
@@ -600,7 +600,7 @@ Converts a moac unit into sha. Possible units are:
 ##### Parameters
 
 1. `Number|String|BigNumber` - A number or BigNumber instance.
-2. `String` - One of the above moac units.
+2. `String` - One of the above LBR units.
 
 ##### Returns
 
@@ -690,7 +690,7 @@ console.log(peerCount); // 4
 
 <h3 id="chain3mc"> chain3.mc </h3>
 
-Contains the MOAC blockchain related methods.
+Contains the LBR blockchain related methods.
 
 ##### Example
 
@@ -1524,7 +1524,7 @@ filter.stopWatching();
     chain3.mc.contract(abiArray)
 
 Creates a contract object for a solidity contract, which can be used to initiate contracts on an address.
-You can read more about events [here](https://github.com/MOACChain/wiki/wiki/MOAC-Contract-ABI#example-javascript-usage).
+You can read more about events [here](https://github.com/LBRChain/wiki/wiki/LBR-Contract-ABI#example-javascript-usage).
 
 ##### Parameters
 
@@ -1856,7 +1856,7 @@ Returns GlobalRegistrar object.
 
 ##### Usage
 
-see [namereg](https://github.com/MOACChain/chain3.js/blob/master/example/namereg.html) example
+see [namereg](https://github.com/LBRChain/chain3.js/blob/master/example/namereg.html) example
 
 ***
 
@@ -2048,7 +2048,7 @@ The nodeInfo administrative property can be queried for all the information know
 console.log("admin nodeInfo", chain3.admin.nodeInfo);
 
 //admin nodeInfo { id: 'a6f486af99679e00ec1a2bf77304e8c7f183987c8138a7c515a08ee42c5bebbda9f01474d43ba7176f891989dbdb78a6cbade67a941e6c2d5a83751039adba36',
-  // name: 'Moac/v1.0.10-rc-89f6ab9c/darwin-amd64/go1.10',
+  // name: 'LBR/v1.0.10-rc-89f6ab9c/darwin-amd64/go1.10',
   // enode: 'enode://a6f486af99679e00ec1a2bf77304e8c7f183987c8138a7c515a08ee42c5bebbda9f01474d43ba7176f891989dbdb78a6cbade67a941e6c2d5a83751039adba36:30336?servicecfgport=:50062&showtopublic=true&beneficialaddress=&ip=',
   // ip: '71.***.***.***',
   // ports: { discovery: 30336, listener: 30336 },
@@ -2072,14 +2072,14 @@ The peers administrative property can be queried for all the information known a
 console.log("admin peers", chain3.admin.peers);
 
 //admin peers [ { id: '089554d6929600b9c70bbd6e1c12594697d0aec43127b9b29c6eb96faf06884fd284f56c3de64155d65e540b59a43f4fd07d8802b4b5e95b2922531e6096c2d5',
-  //   name: 'Moac/v1.0.9-rc-c5e47f69/linux-amd64/go1.11',
+  //   name: 'LBR/v1.0.9-rc-c5e47f69/linux-amd64/go1.11',
   //   caps: [ 'mc/62', 'mc/63' ],
   //   network: 
   //    { localAddress: '192.168.1.169:55681',
   //      remoteAddress: '52.15.143.41:30333' },
   //   protocols: { mc: [Object] } },
   // { id: '271c55ef39be9208e6ad75c935061412b39e51dd97a8e4dbba7d358e91132fd7c79ee687228edea3fd9c833b6ce9c365365aa526999956914d7ac81d00576e76',
-  //   name: 'Moac/v1.0.9-rc-c5e47f69/linux-amd64/go1.11',
+  //   name: 'LBR/v1.0.9-rc-c5e47f69/linux-amd64/go1.11',
   //   caps: [ 'mc/62', 'mc/63' ],
   //   network: 
   //    { localAddress: '192.168.1.169:55680',
