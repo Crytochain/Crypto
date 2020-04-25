@@ -22,7 +22,7 @@ if(cmds != null && cmds.length == 3){
     file: content
   };
 
-//A test account on MOAC testnet 101
+//A test account on LBR testnet 101
 //user should replace this account with his own add and key
 var tacct = {
   "addr": "0x7312F4B8A4457a36827f185325Fd6B66a3f8BB8B", 
@@ -99,7 +99,7 @@ function createContract(src, gasValue, inByteCode){
         }
     
     // console.log(response);
-    console.log("Get response from MOAC node in the feedback function!")
+    console.log("Get response from LBR node in the feedback function!")
     });
 
 }
