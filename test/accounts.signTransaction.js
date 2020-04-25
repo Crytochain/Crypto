@@ -6,7 +6,7 @@ var assert = chai.assert;
 
 /*
  * Test the sign of the message using mc_sign method
- * just like the MOAC node will do.
+ * just like the LBR node will do.
 */
 // var tests = [
 //     { value: '0x7ab47b997cbb195fc158676188647d872de050ca7d4aee1c52756d9458522356', expected: '0x2684060a86a5f2cfeecc8cd1a7590357d888852d22bbc5f9b5aa58b19a3477945ff8ebb4983701b8efce66fd011b392bd8506239394d2392426443b58691eb121b'},
